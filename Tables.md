@@ -12,7 +12,7 @@
         password VARCHAR(20) NOT NULL,
         address TEXT NOT NULL,
         pincode INTEGER NOT NULL,
-        phone_number number(10) NOT NULL,
+        phone_number INTEGER NOT NULL,
         PRIMARY KEY (customer_id),
         cart_id VARCHAR(7) NOT NULL,
         FOREIGN KEY(cart_id) REFERENCES cart(cart_id)
@@ -55,33 +55,5 @@
         FOREIGN KEY (cart_id) REFERENCES Cart(cart_id),
         FOREIGN KEY (product_id) REFERENCES Product(product_id),
         Primary key(cart_id,product_id),
-        purchased varchar(3) default 'NO';
-    );
-
-
-
-
-
-    alter table Cart_item add purchased varchar(3) default 'NO';
-
-
-
-
-
-        CREATE TABLE Seller
-    (
-        Seller_id VARCHAR(6) NOT NULL,
-        s_pass VARCHAR(10) NOT NULL,
-        Name VARCHAR(20) NOT NULL,
-        Address VARCHAR(10) NOT NULL,
-        PRIMARY KEY (Seller_id)
-    );
-
-    CREATE TABLE Seller_Phone_num
-    (
-        Phone_num NUMBER(10) NOT NULL,
-        Seller_id VARCHAR(6) NOT NULL,
-        PRIMARY KEY (Phone_num, Seller_id),
-        FOREIGN KEY (Seller_id) REFERENCES Seller(Seller_id)
-        ON DELETE CASCADE
+        purchased varchar(3) default 'NO'
     );

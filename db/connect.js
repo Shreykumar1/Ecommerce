@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
+const mysql = require('mysql2');
 
-const connectDB = (url) => {
-  return mongoose.connect(url);
-};
+const pool = mysql.createPool({
+    host: "localhost" ,
+    user: "root",
+    database : "ecommerce" ,
+    password : "1234" 
+});
 
-module.exports = connectDB;
+module.exports = pool.promise();
