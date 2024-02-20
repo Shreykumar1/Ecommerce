@@ -29,7 +29,7 @@ const registerUserFunc = async (name,email,password,address,pincode,phone_number
         console.log(error);
     }
 
-    let sql = `insert into Customer() values('${customer_id}','${name}','${email}','${password}','${address}',${pincode},${phone_number},'${cart_id}','${role}');`
+    let sql = `insert into Customer values('${customer_id}','${name}','${email}','${password}','${address}',${pincode},${phone_number},'${cart_id}','${role}');`
     const [registerUser,_]  = await db.query(sql);
     console.log("Error",registerUser);
     return {registerUser,cart_id,customer_id }; 
