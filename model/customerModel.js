@@ -29,8 +29,6 @@ const registerUserFunc = async (name,email,password,address,pincode,phone_number
         console.log(error);
     }
 
-
-
     let sql = `insert into Customer() values('${customer_id}','${name}','${email}','${password}','${address}',${pincode},${phone_number},'${cart_id}','${role}');`
     const [registerUser,_]  = await db.query(sql);
     console.log("Error",registerUser);
@@ -38,4 +36,13 @@ const registerUserFunc = async (name,email,password,address,pincode,phone_number
 }
 
 
-module.exports = { getCustomer, emailAlreadyExists, registerUserFunc };
+const loginUserFunc = async (email,password) => {
+  let sql = `select customer_id , password , email , name, role , cart_id
+  from customer
+  where password = ${password} and email = "${email}"`
+  const [loginUser,_]  = await db.query(sql);
+  return loginUser; 
+}
+
+
+module.exports = { getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc };

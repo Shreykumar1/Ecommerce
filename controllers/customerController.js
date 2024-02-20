@@ -1,4 +1,4 @@
-const {getCustomer, emailAlreadyExists, registerUserFunc} = require('../model/customerModel')
+const {getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc} = require('../model/customerModel')
 
 
 const getAllCustomers = async (req,res) => {
@@ -37,10 +37,26 @@ const register = async (req, res) => {
         res.send(error)
     }
 
-  };
+};
+
+const login = async (req, res) => {
+    try {
+        const { password,email } = req.body;
+        const loginUser = await loginUserFunc(email,password);
+        res.send({user : loginUser})
+    } catch (error) {
+        console.log(error);
+        res.send(error)
+    }
+
+};
+
+
+
 
 
 module.exports = {
     getAllCustomers,
-    register
+    register,
+    login
 }
