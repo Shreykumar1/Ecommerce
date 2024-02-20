@@ -19,8 +19,14 @@ const createProductSql = async (product_name,product_company,color,size,gender,c
     return {product,product_id }; 
 }
 
+const getSingleProductsSql = async (id) => {
+    let sql = `select * from product where product_id = '${id}'`;
+    const [allProducts, _] = await db.execute(sql);
+    return allProducts;
+};
 
 
-module.exports = { getAllProductsSql, createProductSql }
+
+module.exports = { getAllProductsSql, createProductSql, getSingleProductsSql }
 
 

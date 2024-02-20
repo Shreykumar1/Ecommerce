@@ -1,4 +1,4 @@
-const { getAllProductsSql, createProductSql }= require('../model/productsModel')
+const { getAllProductsSql, createProductSql, getSingleProductsSql }= require('../model/productsModel')
 
 
 const getAllProducts = async (req, res) => {
@@ -25,13 +25,26 @@ const createProduct = async (req, res) => {
         }});
     } catch (error) {
         console.log(error);
-        res.send(error)
+        res.send(error);
     }
 
 };
 
 
+const getSingleProduct = async (req,res) => {
+    const {id} = req.params;
+    try {
+        const product = await getSingleProductsSql(id);
+        res.status(200).send(product);
+    } catch (error) {
+        console.log(error);
+        res.status(404).send(error);
+    }
+}
+
+
 module.exports = {
     getAllProducts,
-    createProduct
+    createProduct,
+    getSingleProduct
 }
