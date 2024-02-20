@@ -5,12 +5,18 @@ const customerRouter = require('./routes/customerRoute');
 
 app.use(express.json());
 
-app.use(cors())
+app.use(cors());
 
 
 
-app.use('/api/v1/',customerRouter)
+app.use('/api/v1/customer',customerRouter)
 
+app.get("*",(req,res) => {
+    res.send({
+        status : 404 ,
+        msg : "Page Not Found..."
+    })
+})
 
 
 app.listen(3000,()=>{

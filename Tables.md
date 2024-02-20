@@ -57,3 +57,27 @@
         Primary key(cart_id,product_id),
         purchased varchar(3) default 'NO'
     );
+
+
+ENDPOINTS
+
+BASE - http://localhost:3000/api/v1
+Customer - /customer/register  - register user
+         - /customer/login     - login user
+         - /customer           - get all users
+
+Products - /products           - get all products
+         - /products           - create product
+         - /products/1         - get single product
+         - /products/1         - update product
+         - /products/1         - delete product
+
+Payment  - /payment            - get all payments that are completed
+         - /payment            - create payment
+
+Length Of Id's
+
+product_id - 4
+cart_id - 5
+customer_id - 6
+payment_id - 7

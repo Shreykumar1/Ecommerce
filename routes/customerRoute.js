@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router();
 
-const {getAllCustomers} = require('../controllers/customerController')
+const {getAllCustomers, register} = require('../controllers/customerController')
 
-router.route('/customer').get(getAllCustomers);
+router.route('/').get(getAllCustomers);
+router.route('/register').post(register);
 
 
 
