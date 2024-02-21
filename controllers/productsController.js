@@ -18,10 +18,10 @@ const getAllProducts = async (req, res) => {
 
 const createProduct = async (req, res) => {
     try {
-        const { product_name,product_company,color,size,gender,cost,quantity } =  req.body;
-        const {product,product_id} = await createProductSql(product_name,product_company,color,size,gender,cost,quantity)
+        const { product_name,product_company,color,size,gender,cost,quantity,image } =  req.body;
+        const {product,product_id} = await createProductSql(product_name,product_company,color,size,gender,cost,quantity,image)
         res.status(201).send({status : 201,user : {
-            product_id,product_name,product_company,color,size,gender,cost,quantity
+            product_id,product_name,product_company,color,size,gender,cost,quantity,image
         }});
     } catch (error) {
         console.log(error);

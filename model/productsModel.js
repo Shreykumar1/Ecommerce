@@ -9,12 +9,12 @@ const getAllProductsSql = async () => {
     return allProducts;
 };
 
-const createProductSql = async (product_name,product_company,color,size,gender,cost,quantity) => {
+const createProductSql = async (product_name,product_company,color,size,gender,cost,quantity,image) => {
 
     const uid = new ShortUniqueId({ length: 4});
     const product_id = uid.rnd();
 
-    let sql = `insert into Product values('${product_id}','${product_name}','${product_company}','${color}',${size},'${gender}',${cost},${quantity});`
+    let sql = `insert into Product values('${product_id}','${product_name}','${product_company}','${color}',${size},'${gender}',${cost},${quantity},'${image}');`
     const [product,_]  = await db.query(sql);
     return {product,product_id }; 
 }
