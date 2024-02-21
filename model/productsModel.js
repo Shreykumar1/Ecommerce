@@ -3,8 +3,8 @@ const ShortUniqueId = require('short-unique-id');
 
 
 
-const getAllProductsSql = async () => {
-    let sql = "select * from product";
+const getAllProductsSql = async (filterString) => {
+    let sql = `select * from product ${filterString}`;
     const [allProducts, _] = await db.execute(sql);
     return allProducts;
 };

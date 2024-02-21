@@ -3,8 +3,33 @@ const { getAllProductsSql, createProductSql, getSingleProductsSql, deleteProduct
 
 const getAllProducts = async (req, res) => {
     try {
-        const allProducts = await getAllProductsSql();
-        res.status(200).send(allProducts)
+        let filterArray = []
+        const {name,company,size,gender,cost} = req.query;
+        if(name){
+             filterArray.push(`product_name = "${name}"`)
+        }
+        if(company){
+             filterArray.push(`product_company = "${company}"`)
+        }
+        if(size){
+             filterArray.push(`size = ${size}`)
+        }
+        if(gender){
+             filterArray.push(`gender = "${gender}"`)
+        }
+        if(cost){
+             filterArray.push(`cost < "${cost}"`)
+        }
+
+        let filterString = ""
+        if(filterArray.length > 0){
+            filterString =  filterString + "where "
+            filterString = filterString + filterArray.join(" and ");
+        }
+
+
+        const allProducts = await getAllProductsSql(filterString);
+        res.status(200).send({products : allProducts})
     } catch (error) {
         console.log(error);
         res.status(400).send({
