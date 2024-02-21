@@ -31,8 +31,16 @@ const deleteProductSql = async (id) => {
     return Product;
 };
 
+const updateProductSql = async (id,filterString) => {
+    let sql = `UPDATE product
+    SET ${filterString} WHERE product_id = '${id}' `;
+
+    const result = await db.execute(sql);
+    return result;
+};
 
 
-module.exports = { getAllProductsSql, createProductSql, getSingleProductsSql, deleteProductSql }
+
+module.exports = { getAllProductsSql, createProductSql, getSingleProductsSql, deleteProductSql, updateProductSql }
 
 
