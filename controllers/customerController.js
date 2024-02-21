@@ -4,12 +4,7 @@ const {getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc} = requi
 const getAllCustomers = async (req,res) => {
     try {
         const customers = await getCustomer();
-        const sql = `select email from customer where email = "shreykumar@gmail.com";`
-        const [execute,_] = await db.execute(sql);
-        console.log(execute.length); 
-        const [{email : sqlEmail}] = execute;
-        console.log(sqlEmail);
-        res.send(customers)
+        res.send(customers);
     } catch (error) {
         console.log(error);
         res.status(404).send({msg : error});
@@ -29,7 +24,7 @@ const register = async (req, res) => {
         }
         const {registerUser,cart_id,customer_id} = await registerUserFunc( name, email, password, address, pincode, phone_number, role );
         console.log(registerUser);
-        res.status(201).send({staus : 201,user : {
+        res.status(201).send({staus : 201,customer : {
             customer_id ,name, email, password, address, pincode, phone_number,cart_id, role
         }});
     } catch (error) {
@@ -43,7 +38,13 @@ const login = async (req, res) => {
     try {
         const { password,email } = req.body;
         const loginUser = await loginUserFunc(email,password);
-        res.send({user : loginUser})
+        if(loginUser.length === 0 ){
+            return res.status(401).send({
+                status : 401,
+                msg : "Email or Password Not Correct"
+            })
+        }
+        res.send({customer : loginUser})
     } catch (error) {
         console.log(error);
         res.send(error)

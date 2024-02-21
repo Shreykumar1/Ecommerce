@@ -12,9 +12,10 @@
         password VARCHAR(20) NOT NULL,
         address TEXT NOT NULL,
         pincode INTEGER NOT NULL,
-        phone_number INTEGER NOT NULL,
+        phone_number varchar(12) NOT NULL,
         PRIMARY KEY (customer_id),
         cart_id VARCHAR(7) NOT NULL,
+        role varchar(6) default "user",
         FOREIGN KEY(cart_id) REFERENCES cart(cart_id)
     );
 
@@ -44,6 +45,7 @@
         cost integer NOT NULL,
         quantity integer NOT NULL,
         PRIMARY KEY (Product_id),
+        image text NOT NULL
     );
 
     CREATE TABLE Cart_item
@@ -53,7 +55,7 @@
         cart_id VARCHAR(7) NOT NULL,
         product_id VARCHAR(10) NOT NULL,
         FOREIGN KEY (cart_id) REFERENCES Cart(cart_id),
-        FOREIGN KEY (product_id) REFERENCES Product(product_id),
+        FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE,
         Primary key(cart_id,product_id),
         purchased varchar(3) default 'NO'
     );
