@@ -21,12 +21,18 @@ const createProductSql = async (product_name,product_company,color,size,gender,c
 
 const getSingleProductsSql = async (id) => {
     let sql = `select * from product where product_id = '${id}'`;
-    const [allProducts, _] = await db.execute(sql);
-    return allProducts;
+    const [Product, _] = await db.execute(sql);
+    return Product;
+};
+
+const deleteProductSql = async (id) => {
+    let sql = `delete  from product where product_id = '${id}'`;
+    const [Product, _] = await db.execute(sql);
+    return Product;
 };
 
 
 
-module.exports = { getAllProductsSql, createProductSql, getSingleProductsSql }
+module.exports = { getAllProductsSql, createProductSql, getSingleProductsSql, deleteProductSql }
 
 

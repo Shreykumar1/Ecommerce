@@ -1,4 +1,4 @@
-const { getAllProductsSql, createProductSql, getSingleProductsSql }= require('../model/productsModel')
+const { getAllProductsSql, createProductSql, getSingleProductsSql, deleteProductSql }= require('../model/productsModel')
 
 
 const getAllProducts = async (req, res) => {
@@ -35,6 +35,12 @@ const getSingleProduct = async (req,res) => {
     const {id} = req.params;
     try {
         const product = await getSingleProductsSql(id);
+        if(product.length === 0){
+            return res.status(404).send({
+                status : 404,
+                msg : `product with id ${id} not found`
+            })
+        }
         res.status(200).send(product);
     } catch (error) {
         console.log(error);
@@ -43,8 +49,27 @@ const getSingleProduct = async (req,res) => {
 }
 
 
+const deleteProduct = async (req,res) => {
+    const {id} = req.params;
+    try {
+        const productExists = await getSingleProductsSql(id);
+        if(productExists.length === 0){
+            return res.status(404).send({
+                status : 404,
+                msg : `product with id ${id} not found`
+            })
+        }
+        const product = await deleteProductSql(id);
+        res.status(200).send(product);
+    } catch (error) {
+        console.log(error);
+        res.status(404).send(error);
+    }
+}
+
 module.exports = {
     getAllProducts,
     createProduct,
-    getSingleProduct
+    getSingleProduct,
+    deleteProduct
 }
