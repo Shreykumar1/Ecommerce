@@ -1,4 +1,4 @@
-const { getAllCartItemsSql, createCartItemsSql, getSingleCartItemSql } = require("../model/cartModel");
+const { getAllCartItemsSql, createCartItemsSql, getSingleCartItemSql, updateCartSql, deleteCartItemSql } = require("../model/cartModel");
 
 
 
@@ -36,6 +36,30 @@ const getSingleCart = async (req,res) => {
     }
 }
 
+const updateCart = async (req,res) => {
+    try {
+        const {id} = req.params;
+        const {cart_quantity,product_id} = req.body;
+        const cart = await updateCartSql(id,cart_quantity,product_id);
+        res.send(cart);
+    } catch (error) {
+        console.log(error);
+        res.status(404).send({msg : error});
+    }
+}
+
+const deleteCartItem = async (req,res) => {
+    try {
+        const {id} = req.params;
+        const {product_id} = req.body;
+        const cart = await deleteCartItemSql(id,product_id);
+        res.send(cart);
+    } catch (error) {
+        console.log(error);
+        res.status(404).send({msg : error});
+    }
+}
+
 
 
 
@@ -43,5 +67,7 @@ const getSingleCart = async (req,res) => {
 module.exports = {
     getAllCartItems,
     createCartItems,
-    getSingleCart
+    getSingleCart,
+    updateCart,
+    deleteCartItem
 }

@@ -26,9 +26,25 @@ const getSingleCartItemSql = async (cart_id) => {
     return cart;
 }
 
+const updateCartSql = async (id,cart_quantity,product_id) => {
+    let sql = `UPDATE cart_item
+    SET cart_quantity = ${cart_quantity} WHERE product_id = '${product_id}' and cart_id ='${id}'`;
+    const result = await db.execute(sql);
+    return result;
+};
+
+
+const deleteCartItemSql = async (id,product_id) => {
+    let sql = `delete  from cart_item where product_id = '${product_id}' and cart_id = '${id}'`;
+    const [Product, _] = await db.execute(sql);
+    return Product;
+};
+
 
 module.exports = {
     getAllCartItemsSql,
     createCartItemsSql,
-    getSingleCartItemSql
+    getSingleCartItemSql,
+    updateCartSql,
+    deleteCartItemSql
 }
