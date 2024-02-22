@@ -20,8 +20,15 @@ const createCartItemsSql = async (cart_quantity,cart_id,product_id,purchased) =>
     return cart;
 }
 
+const getSingleCartItemSql = async (cart_id) => {
+    const sql = `select * from cart_item where cart_id ='${cart_id}'`
+    const [cart,_] = await db.execute(sql);
+    return cart;
+}
+
 
 module.exports = {
     getAllCartItemsSql,
-    createCartItemsSql
+    createCartItemsSql,
+    getSingleCartItemSql
 }

@@ -1,4 +1,4 @@
-const { getAllCartItemsSql, createCartItemsSql } = require("../model/cartModel");
+const { getAllCartItemsSql, createCartItemsSql, getSingleCartItemSql } = require("../model/cartModel");
 
 
 
@@ -24,11 +24,24 @@ const createCartItems = async (req,res) => {
     }
 }
 
+const getSingleCart = async (req,res) => {
+    try {
+        const {id} = req.params;
+        console.log(id);
+        const cart = await getSingleCartItemSql(id);
+        res.send(cart);
+    } catch (error) {
+        console.log(error);
+        res.status(404).send({msg : error});
+    }
+}
+
 
 
 
 
 module.exports = {
     getAllCartItems,
-    createCartItems
+    createCartItems,
+    getSingleCart
 }
