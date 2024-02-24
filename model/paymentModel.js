@@ -38,8 +38,14 @@ const createPaymentSql = async (payment_type,customer_id,cart_id) => {
     return {payment,obj : {payment_id,payment_date : createdAtDate,payment_type,customer_id,cart_id,total_amount : total},updatePurchased};
 }
 
+const getSinglePaymentSql = async (payment_id) => {
+    const sql = `select * from payment where payment_id = "${payment_id}"`;
+    const [payment,_] = await db.execute(sql);
+    return payment
+}
 
 module.exports = {
     getAllpaymentsSql,
-    createPaymentSql
+    createPaymentSql,
+    getSinglePaymentSql
 }

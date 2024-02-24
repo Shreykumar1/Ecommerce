@@ -1,5 +1,5 @@
 const db = require("../db/connect");
-const { getAllpaymentsSql, createPaymentSql } = require("../model/paymentModel");
+const { getAllpaymentsSql, createPaymentSql, getSinglePaymentSql } = require("../model/paymentModel");
 
 
 
@@ -27,6 +27,10 @@ const createPayment = async (req,res) => {
 }
 const getSinglePayment = async (req,res) => {
     try {
+        const {id} = req.params;
+        console.log(id);
+        const payment = await getSinglePaymentSql(id);
+        res.status(200).send({payment})
     } catch (error) {
         console.log(error);
         res.status(404).send({msg : error});
