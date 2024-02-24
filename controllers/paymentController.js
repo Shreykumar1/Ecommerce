@@ -1,10 +1,12 @@
 const db = require("../db/connect");
+const { getAllpaymentsSql } = require("../model/paymentModel");
 
 
 
 const getAllPayments = async (req,res) => {
     try {
-        res.send("hello")
+        const payments = await getAllpaymentsSql();
+        res.status(200).send({payments})
     } catch (error) {
         console.log(error);
         res.status(404).send({msg : error});
