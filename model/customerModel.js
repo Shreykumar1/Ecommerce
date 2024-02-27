@@ -28,10 +28,25 @@ const registerUserFunc = async (name,email,password,address,pincode,phone_number
     } catch (error) {
         console.log(error);
     }
+    try {
+      if(name === "" || email === "" || password === "" || address === ""||phone_number === ""){
+        const error = {
+          status : 400,
+          msg : "Field Value Cannot be Empty"
+      }
+        return error
+      }
+      let sql = `insert into Customer values('${customer_id}','${name}','${email}','${password}','${address}',${pincode},'${phone_number}','${cart_id}','${role}');`
+      const [registerUser,_]  = await db.query(sql);
+      return {registerUser,cart_id,customer_id }; 
+      
+    } catch (error) {
 
-    let sql = `insert into Customer values('${customer_id}','${name}','${email}','${password}','${address}',${pincode},'${phone_number}','${cart_id}','${role}');`
-    const [registerUser,_]  = await db.query(sql);
-    return {registerUser,cart_id,customer_id }; 
+      console.log(error);
+      return error
+    }
+
+
 }
 
 

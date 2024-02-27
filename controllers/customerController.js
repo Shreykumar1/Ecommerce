@@ -22,10 +22,13 @@ const register = async (req, res) => {
                 msg : "Email Already Exists"
             })
         }
-        const {registerUser,cart_id,customer_id} = await registerUserFunc( name, email, password, address, pincode, phone_number, role );
-        console.log(registerUser);
-        res.status(201).send({staus : 201,customer : {
-            customer_id ,name, email, password, address, pincode, phone_number,cart_id, role
+        const response = await registerUserFunc( name, email, password, address, pincode, phone_number, role );
+        console.log(response);
+        if(response.status === 400){
+           return res.status(400).send(response);
+        }
+        res.status(201).send({status : 201,customer : {
+            customer_id : response.customer_id ,name, email, password, address, pincode, phone_number,cart_id : response.cart_id, role
         }});
     } catch (error) {
         console.log(error);
