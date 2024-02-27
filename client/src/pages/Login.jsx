@@ -37,9 +37,6 @@ const Login = () => {
 
    async function  handleLogin(event){
     event.preventDefault();
-        console.log("Hello");
-        console.log("Email-",email);
-        console.log("Password-",password);
         try {
 
             const response = await axios.post('http://localhost:3000/api/v1/customer/login',{
@@ -58,10 +55,6 @@ const Login = () => {
             console.log(error.response.data.msg);
             toast.error(error.response.data.msg);
         }
-
-        // const abc = await response.data;
-        // console.log(customer);
-        // console.log("Abc",abc);
     
     }
     function handleChange(event){
