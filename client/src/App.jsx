@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { createBrowserRouter ,RouterProvider } from 'react-router-dom';
-import { Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Register,SingleProduct } from './pages';
+import { Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Register,SingleProduct, Admin } from './pages';
 import { ErrorElement } from './components';
 import { useGlobalContext } from './context';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,6 +55,10 @@ function App() {
         {
           path : '/orders',
           element : <Orders />,
+        },
+        {
+          path : '/admin',
+          element : <Admin />,
         },
       ]
     },

@@ -5,20 +5,25 @@ import {  useNavigate} from 'react-router-dom';
 
 
 
-const Orders = () => {
+const Admin = () => {
   const {customer} = useGlobalContext();
+    const custLocal = JSON.parse(localStorage.getItem('customer')) || null ;
   const navigate = useNavigate();
   useEffect(()=>{
-    if(!customer){
+    if(!custLocal){
       navigate('/');
-      toast.error("Login to view your Orders")
+      toast.error("Login to Site")
+    }
+    if(custLocal.role === "user"){
+      navigate('/');
+      toast.error("Not Authorized to access Admin Panel")
     }
   },[])
 
 
   return (
-    <div>Orders</div>
+    <div>Admin</div>
   )
 }
 
-export default Orders
+export default Admin
