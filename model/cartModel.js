@@ -21,9 +21,9 @@ const createCartItemsSql = async (cart_quantity,cart_id,product_id,purchased) =>
 }
 
 const getSingleCartItemSql = async (cart_id) => {
-    const sql = `select  * from product where product_id in 
-    ( select product_id from cart_item
-    where cart_id = "${cart_id}" and purchased = "no" );`
+    const sql = `select  p.product_name,p.product_company,c.cart_quantity,p.cost,p.image,p.color,c.product_id,cart_id 
+    from product p,cart_item c 
+    where p.product_id = c.product_id and c.cart_id = "${cart_id}" and c.purchased= "no"`
     const [cart,_] = await db.execute(sql);
     return cart;
 }
