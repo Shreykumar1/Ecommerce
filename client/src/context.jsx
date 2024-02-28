@@ -39,8 +39,10 @@ const AppProvider = ({ children }) => {
 
   const calculateTotal = async () => {
     console.log("Cart",cart);
+    if(customer){
     const response = await customFetch.get(`cart/${customer.cart_id}`);
     const data = await response.data ;
+    
         let value = 0
         const map1 = data.map((x) =>  { 
              value = value + x.cart_quantity * x.cost;
@@ -56,6 +58,7 @@ const AppProvider = ({ children }) => {
             tax : tax,
             total : totalAmount
         })
+      }
   }
   // useEffect(()=>{
   //   calculateTotal();

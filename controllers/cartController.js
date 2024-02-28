@@ -28,7 +28,6 @@ const createCartItems = async (req,res) => {
 const getSingleCart = async (req,res) => {
     try {
         const {id} = req.params;
-        console.log(id);
         const cart = await getSingleCartItemSql(id);
         res.send(cart);
     } catch (error) {
