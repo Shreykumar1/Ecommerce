@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
         const response = await customFetch.get(`cart/${customer.cart_id}`);
         const data = await response.data ;
         console.log(data);
-        // setCart(data);
+        setCart(data);
       }
       else{
         console.log([]);
@@ -49,7 +49,7 @@ const AppProvider = ({ children }) => {
   },[])
 
   return (
-    <AppContext.Provider value={{ loading,  cocktails, customer, setCustomer }}>
+    <AppContext.Provider value={{ loading,  cocktails, customer, setCustomer, cart }}>
       {children}
     </AppContext.Provider>
   );
