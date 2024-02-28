@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { customFetch, generateAmountOptions } from '../../utils';
+import { useGlobalContext } from '../../context';
 // import { formatPrice,generateAmountOptions } from '../utils'
 
 const CartItem = ({cartItem}) => {
-  console.log(cartItem);
+  const {fetchCart,changeAmount, setChangeAmount } = useGlobalContext()
   const {product_id,product_name,cost,image,cart_quantity,product_company, color,cart_id} = cartItem;
   const [amount,setAmount] = useState(cart_quantity);
-  console.log(cart_quantity);
-
   // const removeItemFromTheCart = () => {
   //   dispatch(removeItem({cartID}))
   // }
@@ -20,8 +19,10 @@ const CartItem = ({cartItem}) => {
     const data = await response.data
   }
   const handleAmount = (e) => {
+    setChangeAmount(amount + 1);
     setAmount(e.target.value);
-    updateQuantity(e.target.value,product_id)
+    updateQuantity(e.target.value,product_id);
+    fetchCart();
   }
   return (
     <article className='mb-12 flex flex-col gap-y-4 sm:flex-row flex-wrap border-b border-base-300 pb-6 last:border-b-0'>

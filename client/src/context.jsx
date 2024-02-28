@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useCallback } from "react";
 import { customFetch } from "./utils";
 
 const url = `http://localhost:3000/api/v1/`
@@ -15,41 +14,56 @@ const AppProvider = ({ children }) => {
     setCustomer(custLocal)
   },[])
 
-  const [cocktails, setCocktails] = useState([]);
+  const [changeAmount, setChangeAmount] = useState(0);
   const [cart, setCart] = useState([]);
-  useEffect(()=>{
-    const fetchCart = async () => {
-      if(customer){
-        const response = await customFetch.get(`cart/${customer.cart_id}`);
-        const data = await response.data ;
-        console.log(data);
-        setCart(data);
-      }
-      else{
-        console.log([]);
-      }
+  const [price,setPrice] = useState({
+    base : 0,
+    shipping : 0,
+    tax : 0,
+    total : 0
+});
+  const fetchCart = async () => {
+    console.log("fetching cart");
+    if(customer){
+      const response = await customFetch.get(`cart/${customer.cart_id}`);
+      const data = await response.data ;
+      setCart(data);
     }
-    fetchCart()
-  },[customer])
-
-  const fetchDrinks = async () => {
-    setLoading(true)
-    try {
-      const response = await customFetch(`/customer`);
-      const data = await response.data;
-        setCocktails(data)
-      
-    } catch (error) {
-      console.log(error);
+    else{
+      console.log([]);
     }
-    setLoading(false)
   }
   useEffect(()=>{
-    fetchDrinks()
-  },[])
+    fetchCart();
+  },[customer])
+
+  const calculateTotal = async () => {
+    console.log("Cart",cart);
+    const response = await customFetch.get(`cart/${customer.cart_id}`);
+    const data = await response.data ;
+        let value = 0
+        const map1 = data.map((x) =>  { 
+             value = value + x.cart_quantity * x.cost;
+            return value
+        });
+        console.log(value);
+        const shipping = 500;
+        const tax = (value/100 + shipping)*5/100;
+        const totalAmount = value/100 + shipping + tax ;
+        setPrice({
+            base : value/100,
+            shipping : shipping,
+            tax : tax,
+            total : totalAmount
+        })
+  }
+  // useEffect(()=>{
+  //   calculateTotal();
+  // },[changeAmount])
+
 
   return (
-    <AppContext.Provider value={{ loading,  cocktails, customer, setCustomer, cart }}>
+    <AppContext.Provider value={{ loading,  customer, setCustomer, cart, fetchCart, price, changeAmount, setChangeAmount, calculateTotal }}>
       {children}
     </AppContext.Provider>
   );
