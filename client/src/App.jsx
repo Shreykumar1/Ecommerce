@@ -5,22 +5,22 @@ import { ErrorElement } from './components';
 import { useGlobalContext } from './context';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import { loader as loginLoader } from './pages/Products';
 
 
 
 function App() {
   const [count, setCount] = useState(0);
   const { cocktails,loading } = useGlobalContext();
-  console.log(cocktails,loading);
-  useEffect(() => {
-    fetch("http://localhost:3000/api/v1/products/kkE4")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/v1/products/kkE4")
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }, []);
 
   const router = createBrowserRouter([
     {
@@ -37,6 +37,7 @@ function App() {
           path : '/products',
           element : <Products />,
           errorElement : <ErrorElement />,
+          loader : loginLoader
           
         },
         {
