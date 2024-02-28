@@ -32,7 +32,6 @@ const Login = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const {customer, setCustomer} = useGlobalContext();
-    console.log(customer);
     const navigate = useNavigate();
 
    async function  handleLogin(event){

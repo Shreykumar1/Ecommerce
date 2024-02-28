@@ -16,6 +16,21 @@ const AppProvider = ({ children }) => {
   },[])
 
   const [cocktails, setCocktails] = useState([]);
+  const [cart, setCart] = useState([]);
+  useEffect(()=>{
+    const fetchCart = async () => {
+      if(customer){
+        const response = await customFetch.get(`cart/${customer.cart_id}`);
+        const data = await response.data ;
+        console.log(data);
+        // setCart(data);
+      }
+      else{
+        console.log([]);
+      }
+    }
+    fetchCart()
+  },[customer])
 
   const fetchDrinks = async () => {
     setLoading(true)

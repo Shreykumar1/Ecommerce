@@ -1,43 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import { Link ,useParams } from 'react-router-dom'
-import { customFetch } from '../utils';
+import { customFetch, generateAmountOptions } from '../utils';
+import { useGlobalContext } from '../context';
 
 const SingleProduct = () => {
+  const {customer} = useGlobalContext();
   const [product,setProduct] = useState({});
   const [loading,setLoading] = useState(false);
   const {id} = useParams();
-  // console.log(id);
-  // const fetchSingle = async () => {
-  //   try {
-  //     const response = await customFetch.get(`/products/${id}`);
-  //     const data = await response.data ;
-  //     console.log(data);
-  //     setProduct(data[0])
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // useEffect(()=>{
-  //   fetchSingle()
-  // },[]);
-  // console.log(product);
+  // amount
+  const [amount,setAmount] = useState(1);
+  const handleAmount = (e) => {
+    console.log(amount);
+    setAmount(e.target.value)
+  }
 
   useEffect(() => {
     setLoading(true)
     customFetch(`/products/${id}`)
-    .then(response => {console.log(response.data[0])
+    .then(response => {
       setProduct(response.data[0])
     })
     setLoading(false)
-        // 4. Setting *dogImage* to the image url that we received from the response above
-    // .then(data => console.log(data))
   },[])
   const {product_name,cost,image,product_company,color,size,gender} =  product;
-  console.log({product_name,cost,image,product_company,color} );
 
     if(loading) {
       return <h1>Loading</h1>
     }
+    const addToCart = async () => {
+      let intAmount = parseInt(amount);
+      const add = {
+        cart_quantity : intAmount,
+        cart_id : customer.cart_id,
+        product_id : id,
+        purchased : "no"
+      }
+      console.log(add);
+      try {
+        const response = await customFetch.post('/cart',add)
+        const data = await response.data;
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
   return (
 
 <section>
@@ -70,17 +78,6 @@ const SingleProduct = () => {
         colors
       </h4>
       <div className='mt-2'>
-        {/* {colors.map((color) => {
-          return (
-            <button
-              key={color}
-              type='button'
-              className={`badge  w-6 h-6 mr-2  ${ 'border-2 border-secondary'  }`}
-              style={{ backgroundColor: color }}
-              // onClick={() => setProductColor(color)}
-            ></button>
-          );
-        })} */}
         {color}
       </div>
     </div>
@@ -88,18 +85,18 @@ const SingleProduct = () => {
     <div className='form-control w-full max-w-xs'>
       <label className='label'>
         <h4 className='text-md font-medium tracking-wider capitalize'>
-          amount = {cost/100}
+          amount = {cost}
         </h4>
       </label>
 
-      {/* <select className="select select-bordered select-md select-secondary"
+      <select className="select select-bordered select-md select-secondary"
       value={amount} onChange={handleAmount}>
         {generateAmountOptions(20)}
-      </select> */}
+      </select>
     </div>
     {/* CART BTN */}
     <div className="mt-10">
-      <button className="btn btn-secondary btn-md uppercase" >
+      <button className="btn btn-secondary btn-md uppercase" onClick={addToCart}>
         Add To Bag
       </button>
     </div>
