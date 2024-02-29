@@ -52,7 +52,7 @@ const registerUserFunc = async (name,email,password,address,pincode,phone_number
 
 const loginUserFunc = async (email,password) => {
   try {
-    let sql = `select customer_id , password , email , name, role , cart_id
+    let sql = `select *
     from customer
     where password = "${password}" and email = "${email}"`
     const [loginUser,_]  = await db.query(sql);
