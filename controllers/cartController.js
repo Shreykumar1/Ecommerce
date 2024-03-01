@@ -62,11 +62,14 @@ const deleteCartItem = async (req,res) => {
     try {
         const {id} = req.params;
         const {product_id} = req.body;
-        let sql = `SELECT * FROM cart_item  WHERE product_id = '${product_id}' and cart_id ='${id}'`
+        console.log(product_id);
+        let sql = `SELECT * FROM cart_item  WHERE product_id = '${product_id}' and cart_id ='${id}';`
+        console.log(sql);
         const [cartItemExists,_] = await db.execute(sql);
+        console.log(cartItemExists);
         if(cartItemExists.length === 0){
             return res.status(404).send({
-                status : 404,
+                status : 400,
                 msg : `cart with cart_id = ${id} and product_id = ${product_id} not found`
             })
         }
@@ -74,7 +77,7 @@ const deleteCartItem = async (req,res) => {
         res.send({msg : `cart item with cart_id = ${id} and product_id = ${product_id} deleted`,cart : cartItemExists});
     } catch (error) {
         console.log(error);
-        res.status(404).send({msg : error});
+        res.status(400).send({msg : error});
     }
 }
 
