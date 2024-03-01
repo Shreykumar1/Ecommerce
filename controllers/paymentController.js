@@ -14,8 +14,8 @@ const getAllPayments = async (req,res) => {
 }
 const createPayment = async (req,res) => {
     try {
-        const {payment_type,customer_id,cart_id} = req.body;
-        const {payment,obj,error} = await createPaymentSql(payment_type,customer_id,cart_id);
+        const {payment_type,customer_id,cart_id,product_id} = req.body;
+        const {payment,obj,error} = await createPaymentSql(payment_type,customer_id,cart_id,product_id);
         if(error){
            return res.status(404).send(error)
         }
@@ -29,8 +29,8 @@ const getSinglePayment = async (req,res) => {
     try {
         const {id} = req.params;
         console.log(id);
-        const payment = await getSinglePaymentSql(id);
-        res.status(200).send({payment})
+        const payments = await getSinglePaymentSql(id);
+        res.status(200).send({payments})
     } catch (error) {
         console.log(error);
         res.status(404).send({msg : error});
