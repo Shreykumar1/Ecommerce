@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGlobalContext } from '../context'
 import { CartItemsList, SectionTitle, CartTotals  } from '../components';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,10 @@ import { customFetch } from '../utils';
 const Cart = () => {
   const {cart, customer, fetchCart} = useGlobalContext();
   const [type, setType] = useState(null);
+  // const [cartProductId,setCartProductId]  = useState([]);
+  useEffect(()=>{
+    fetchCart
+  },[])
   const handleType = (e) => {
     if(e.target.value !== "default"){
       setType(e.target.value);
@@ -16,8 +20,13 @@ const Cart = () => {
     console.log(e.target.value);
   }
   const createPayment = async () => {
-    console.log(type);
     event.preventDefault();
+    const array = cart.map((item)=>{
+      return `${item.product_id}`;
+    });
+    let str = array.join("','");
+    str = "'" + str + "'";
+    console.log("ProductId String",str);
     if(!type){
       toast.error("Please Select Payment Type")
     }else{
@@ -26,7 +35,8 @@ const Cart = () => {
       {
         payment_type : type,
         customer_id : customer.customer_id,
-        cart_id : customer.cart_id
+        cart_id : customer.cart_id,
+        product_id : str
       })
       const data = await response.data ;
        console.log(data);

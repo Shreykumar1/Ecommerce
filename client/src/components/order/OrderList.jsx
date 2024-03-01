@@ -27,13 +27,15 @@ const OrdersList = ({payments}) => {
           <tbody>
             {payments.map((payment)=>{
               const id = payment.payment_id;
-              const {  payment_date, total_amount } = payment;
-              const date = day(payment_date).format('hh:mm a - MMM Do, YYYY ');
+              const {  payment_date, total_amount, names, num } = payment;
+              const {address, phone_number} = customer;
+              console.log("Customer",customer);
+              const date = day(payment_date).format(' MMM Do, YYYY ');
 
               return <tr key={id}>
-                {/* <td>{name}</td> */}
-                {/* <td>{customer.address}</td> */}
-                {/* <td>{numItemsInCart}</td> */}
+                <td>{names}</td>
+                <td>{address}</td>
+                <td>{num}</td>
                 <td>{total_amount/100}</td>
                 <td className='hidden sm:block'>{date}</td>
               </tr>

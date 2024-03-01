@@ -23,7 +23,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const reponse = await customFetch.get(`/payment`);
+      const reponse = await customFetch.get(`/payment/${customer.cart_id}`);
       const data = reponse.data;
       console.log(data);
       setPayments(data.payments);

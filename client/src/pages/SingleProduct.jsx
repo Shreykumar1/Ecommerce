@@ -4,7 +4,7 @@ import { customFetch, generateAmountOptions } from '../utils';
 import { useGlobalContext } from '../context';
 
 const SingleProduct = () => {
-  const {customer} = useGlobalContext();
+  const {customer,fetchCart} = useGlobalContext();
   const [product,setProduct] = useState({});
   const [loading,setLoading] = useState(false);
   const {id} = useParams();
@@ -41,6 +41,7 @@ const SingleProduct = () => {
         const response = await customFetch.post('/cart',add)
         const data = await response.data;
         console.log(data);
+        fetchCart()
       } catch (error) {
         console.log(error);
       }
