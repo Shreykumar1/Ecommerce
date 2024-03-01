@@ -8,7 +8,7 @@ import { customFetch } from '../utils';
 
 const Cart = () => {
   const {cart, customer, fetchCart} = useGlobalContext();
-  const [type, setType] = useState(null);
+  const [type, setType] = useState("");
   // const [cartProductId,setCartProductId]  = useState([]);
   useEffect(()=>{
     fetchCart
@@ -47,6 +47,9 @@ const Cart = () => {
 
     }
   }
+  }
+  if(cart.length === 0){
+    return <SectionTitle text='Your cart is empty' />
   }
   return (
     <>

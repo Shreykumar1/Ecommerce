@@ -7,17 +7,34 @@ const CartItem = ({cartItem}) => {
   const {fetchCart,changeAmount, setChangeAmount } = useGlobalContext()
   const {product_id,product_name,cost,image,cart_quantity,product_company, color,cart_id} = cartItem;
   const [amount,setAmount] = useState(cart_quantity);
-  // const removeItemFromTheCart = () => {
-  //   dispatch(removeItem({cartID}))
-  // }
-  const updateQuantity = async (amount,product) => { 
-    const response = await customFetch.patch(`/cart/${cart_id}`,
-    {
-      "cart_quantity" : amount,
-      "product_id" : product
-    });
-    const data = await response.data
+  const removeItemFromTheCart = async (product) => { 
+    console.log("ProductId",cartItem.product_id);
+    try {
+      const response = await customFetch.patch(`/cart/delete/${cart_id}`,
+      {
+        "product_id" : product_id
+      });
+      const data = await response.data
+      console.log(data);
+      fetchCart();
+    } catch (error) {
+      console.log(error);
+    }
   }
+  const updateQuantity = async (amount,product) => { 
+    try {
+      const response = await customFetch.patch(`/cart/${cart_id}`,
+      {
+        "cart_quantity" : amount,
+        "product_id" : product
+      });
+      const data = await response.data
+      
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleAmount = (e) => {
     setChangeAmount(amount + 1);
     setAmount(e.target.value);
@@ -52,7 +69,7 @@ const CartItem = ({cartItem}) => {
         </div>
         <button
           className='mt-2 link link-primary link-hover text-sm'
-          // onClick={removeItemFromTheCart}
+          onClick={()=>removeItemFromTheCart(cartItem.product_id)}
         >
           remove
         </button>
@@ -63,14 +80,3 @@ const CartItem = ({cartItem}) => {
 }
 
 export default CartItem
-
-
-// import React from 'react'
-
-// const CartItem = () => {
-//   return (
-//     <div>CartItem</div>
-//   )
-// }
-
-// export default CartItem
