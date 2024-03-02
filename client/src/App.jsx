@@ -5,7 +5,7 @@ import { AdminCustomers, AdminOrders, AdminProducts, Dashboard, ErrorElement } f
 import { useGlobalContext } from './context';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { loader as loginLoader } from './pages/Products';
+import { loader as productLoader } from './pages/Products';
 
 
 
@@ -37,7 +37,7 @@ function App() {
           path : '/products',
           element : <Products />,
           errorElement : <ErrorElement />,
-          loader : loginLoader
+          loader : productLoader
           
         },
         {
@@ -71,7 +71,8 @@ function App() {
             },
             {
               path : '/admin/product',
-              element : <AdminProducts />
+              element : <AdminProducts />,
+              loader : productLoader
             },
             {
               path : '/admin/order',
