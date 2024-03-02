@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useGlobalContext } from '../../context';
 import { customFetch } from '../../utils';
 import { toast } from 'react-toastify';
 
