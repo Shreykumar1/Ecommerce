@@ -15,3 +15,8 @@ export { default as CartTotals} from "./cart/CartTotals"
 export { default as SectionTitle} from "./cart/SectionTitle"
 // Order
 export { default as OrderList} from "./order/OrderList"
+// Admin
+export { default as Dashboard} from "./admin/Dashboard"
+export { default as AdminProducts} from "./admin/AdminProducts"
+export { default as AdminOrders} from "./admin/AdminOrders"
+export { default as AdminCustomers} from "./admin/AdminCustomers"
