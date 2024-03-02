@@ -1,19 +1,27 @@
 import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom'
 import { formatPrice } from '../../utils';
+import AddProducts from './AddProducts'
 
 const AdminProducts = () => {
   const {products} = useLoaderData();
-  console.log(products);
   const [limit,setLimit] = useState({
     lower : 0,
     upper : 10
   });
+  const [addProductPage,setAddProductPage] = useState(false);
+  if(addProductPage){
+    return <AddProducts />
+  }
   return (
     <div className='mt-8'>
+
+    <div className="flex justify-between">
     <h4 className="capitalize mb-4">
       total products : {products.length}
     </h4>
+      <button className="btn btn-primary" onClick={()=>setAddProductPage(true)}>Add Product</button>
+    </div>
     <div className="overflow-x-auto">
       <table className="table table-zebra">
         <thead>
@@ -36,7 +44,7 @@ const AdminProducts = () => {
               <td>{product_name}</td>
               <td>{product_company}</td>
               <td>{quantity}</td>
-              <td>{gender}</td>
+              <td>{gender==="M"?"Male":"Female"}</td>
               <td>{size}</td>
               <td>{formatPrice(cost)}</td>
               {/* <td className='hidden sm:block'>{date}</td> */}

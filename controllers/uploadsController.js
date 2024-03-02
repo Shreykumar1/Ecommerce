@@ -18,7 +18,7 @@ const uploadProductImage = async (req,res) => {
     const imagePath = path.join(__dirname,'../public/uploads/'+`${productImage.name}`);
     console.log(imagePath);
     await productImage.mv(imagePath)
-    return res.status(201).json({image : {src : `/uploads/${productImage.name}`}})
+    return res.status(201).json({image : {src : `http://localhost:3000/uploads/${productImage.name}`}})
 }
 
 
