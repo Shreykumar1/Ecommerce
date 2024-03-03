@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
-import { useLoaderData } from 'react-router-dom'
-import { formatPrice } from '../../utils';
+import React, { useEffect, useState } from 'react'
+import { customFetch, formatPrice } from '../../utils';
 import AddProducts from './AddProducts'
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const AdminProducts = () => {
-  const {products} = useLoaderData();
+  const navigate = useNavigate();
+  const [products,setProducts] = useState([])
+  useEffect(() => {
+    customFetch(`/products`)
+    .then(response => {
+      setProducts(response.data.products)
+      console.log(response.data)
+    })
+  },[])
+  // const {products} = useLoaderData();
   const [limit,setLimit] = useState({
     lower : 0,
     upper : 10
@@ -13,6 +25,17 @@ const AdminProducts = () => {
   if(addProductPage){
     return <AddProducts />
   }
+  const deleteProduct = async (id) => {
+    try {
+      const response = await customFetch.delete(`/products/${id}`);
+      const data = await response.data ;
+      toast.success("Item Deleted");
+      navigate('/admin/product')
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  } 
   return (
     <div className='mt-8'>
 
@@ -32,7 +55,8 @@ const AdminProducts = () => {
             <th>Quantity</th>
             <th>Gender</th>
             <th>Size</th>
-            <th className='hidden sm:block'>Price</th>
+            <th >Price</th>
+            <th >Edit / Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +71,10 @@ const AdminProducts = () => {
               <td>{gender==="M"?"Male":"Female"}</td>
               <td>{size}</td>
               <td>{formatPrice(cost)}</td>
+              <td className='flex gap-6 text-xl pt-5'>
+               <button onClick={()=>{navigate(`/admin/product/${id}`)}}><FaEdit /> </button> 
+               <button onClick={()=>deleteProduct(id)}><MdDelete className='text-red-600 text-2xl'/></button>
+                </td>
               {/* <td className='hidden sm:block'>{date}</td> */}
             </tr>
           })}

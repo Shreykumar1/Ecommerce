@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { createBrowserRouter ,RouterProvider } from 'react-router-dom';
 import { Cart,Checkout,Error,HomeLayout,Landing,Login,Orders,Products,Register,SingleProduct, Admin } from './pages';
-import { AdminCustomers, AdminOrders, AdminProducts, Dashboard, ErrorElement } from './components';
+import { AdminCustomers, AdminOrders, AdminProducts, AdminSingleProduct, Dashboard, ErrorElement } from './components';
 import { useGlobalContext } from './context';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
@@ -73,6 +73,10 @@ function App() {
               path : '/admin/product',
               element : <AdminProducts />,
               loader : productLoader
+            },
+            {
+              path : '/admin/product/:id',
+              element : <AdminSingleProduct />,
             },
             {
               path : '/admin/order',
