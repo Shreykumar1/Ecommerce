@@ -29,11 +29,11 @@ const CartTotals = ({type,handleType}) => {
                     </p>
                     <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
                         <span>Tax </span>
-                        <span>{price.tax}</span>
+                        <span>{price.tax.toFixed(2)}</span>
                     </p>
                     <p className='mt-4 flex justify-between text-sm pb-2'>
                         <span className='font-bold'>Order </span>
-                        <span className='font-bold'>{price.total}</span>
+                        <span className='font-bold'>{price.total.toFixed(2)}</span>
                     </p>
                 </div>
             </div>

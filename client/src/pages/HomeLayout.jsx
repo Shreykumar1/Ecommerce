@@ -12,12 +12,13 @@ const HomeLayout = () => {
       {isPageLoading ? (
         <h1>Loading</h1>
       ) : (
-        <section className='align-element pb-20'>
+        <section >
           <Outlet />
         </section>
       )}
     </>
   )
 }
+// className=' pb-20'
 
 export default HomeLayout

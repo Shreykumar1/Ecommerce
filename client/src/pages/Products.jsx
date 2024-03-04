@@ -11,7 +11,7 @@ export const loader =  async () => {
 
 const Products = () => {
   return (
-    <div>
+    <div className='align-element pt-20'>
       <ProductsContainer />
     </div>
   )

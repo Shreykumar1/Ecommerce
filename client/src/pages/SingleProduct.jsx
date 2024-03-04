@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link ,useParams } from 'react-router-dom'
-import { customFetch, generateAmountOptions } from '../utils';
+import { customFetch, formatPrice, generateAmountOptions } from '../utils';
 import { useGlobalContext } from '../context';
 
 const SingleProduct = () => {
@@ -49,7 +49,7 @@ const SingleProduct = () => {
 
   return (
 
-<section>
+<section className='align-element pt-20'>
 <div className='text-md breadcrumbs'>
   <ul>
     <li>
@@ -74,30 +74,50 @@ const SingleProduct = () => {
     {/* <p className='mt-6 leading-8'>{description}</p> */}
 
     {/* COLORS */}
-    <div className='mt-6'>
+    <div className='mt-6 flex gap-x-4'>
       <h4 className='text-md font-medium tracking-wider capitalize'>
-        colors
+        color :
       </h4>
-      <div className='mt-2'>
-        {color}
-      </div>
+      <div className=' flex gap-x-2 capitalize'>
+              <p>{color}</p><button
+                    type='button'
+                    className={`badge  w-6 h-6 mr-2  ${color  && 'border-2 border-secondary'  }`}
+                    style={{ backgroundColor: color }}
+                  ></button>
+            </div>
+    </div>
+    <div className='mt-3 flex gap-x-4'>
+      <h4 className='text-md font-medium tracking-wider capitalize'>
+        gender :
+      </h4>
+      <div className=' flex gap-x-2 capitalize'>
+              <p>{gender==="M"?"Male":"Female"}</p>
+            </div>
+    </div>
+    <div className='mt-3 flex gap-x-4'>
+      <h4 className='text-md font-medium tracking-wider capitalize'>
+        size :
+      </h4>
+      <div className=' flex gap-x-2 capitalize'>
+              <p>{size}</p>
+            </div>
     </div>
     {/* AMOUNT */}
     <div className='form-control w-full max-w-xs'>
       <label className='label'>
         <h4 className='text-md font-medium tracking-wider capitalize'>
-          amount = {cost}
+          amount : {formatPrice(cost)}
         </h4>
       </label>
 
       <select className="select select-bordered select-md select-secondary"
       value={amount} onChange={handleAmount}>
-        {generateAmountOptions(20)}
+        {generateAmountOptions(10)}
       </select>
     </div>
     {/* CART BTN */}
     <div className="mt-10">
-      <button className="btn btn-secondary btn-md uppercase" onClick={addToCart}>
+      <button className="btn btn-secondary btn-md uppercase" onClick={addToCart} >
         Add To Bag
       </button>
     </div>

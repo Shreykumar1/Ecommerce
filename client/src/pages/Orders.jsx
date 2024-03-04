@@ -34,10 +34,10 @@ const Orders = () => {
 
 
   return (
-    <>
+    <section className='align-element pt-20'>
       <SectionTitle text='Order' />
       <OrderList payments={payments} />
-    </>
+    </section>
   )
 }
 
