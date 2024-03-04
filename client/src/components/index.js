@@ -22,3 +22,5 @@ export { default as AdminOrders} from "./admin/AdminOrders"
 export { default as AdminCustomers} from "./admin/AdminCustomers"
 export { default as AddProducts} from "./admin/AddProducts"
 export { default as AdminSingleProduct} from "./admin/AdminSingleProduct"
+// Landing
+export { default as Hero} from "./landing/Hero"
