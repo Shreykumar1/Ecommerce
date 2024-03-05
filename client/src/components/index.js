@@ -24,3 +24,8 @@ export { default as AddProducts} from "./admin/AddProducts"
 export { default as AdminSingleProduct} from "./admin/AdminSingleProduct"
 // Landing
 export { default as Hero} from "./landing/Hero"
+export { default as Featured} from "./landing/Featured"
+export { default as Service} from "./landing/Service"
+export { default as LandingImages} from "./landing/LandingImages"
+export { default as Cra} from "./landing/Cra"
+export { default as Footer} from "./landing/Footer"

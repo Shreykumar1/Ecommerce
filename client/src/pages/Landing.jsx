@@ -1,12 +1,20 @@
 import React from 'react'
-import {Hero} from '../components'
+import {Cra, Footer, Hero, LandingImages, SectionTitle, Service} from '../components'
+import Featured from '../components/landing/Featured'
 
 const Landing = () => {
   return (
     <>
-    <div>Landing</div>
-    <img src="http://localhost:3000/uploads/3d-business-man-and-woman-working-at-the-table.png" alt="" />
     <Hero />
+    <div className='align-element pt-12'>
+    <SectionTitle text ={"Featured Products"} className="mx-auto max-w-6xl px-8"/>
+    </div>
+    <Featured />
+    <Service />   
+    <Cra />
+    <LandingImages />
+    <Footer />
+    
     </>
   )
 }
