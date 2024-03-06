@@ -1,4 +1,4 @@
-const {getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc} = require('../model/customerModel')
+const {getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc, adminSql} = require('../model/customerModel')
 
 
 const getAllCustomers = async (req,res) => {
@@ -7,7 +7,7 @@ const getAllCustomers = async (req,res) => {
         res.send(customers);
     } catch (error) {
         console.log(error);
-        res.status(404).send({msg : error});
+        res.status(400).send({msg : error});
     }
 }
 
@@ -23,7 +23,6 @@ const register = async (req, res) => {
             })
         }
         const response = await registerUserFunc( name, email, password, address, pincode, phone_number, role );
-        console.log(response);
         if(response.status === 400){
            return res.status(400).send(response);
         }
@@ -55,6 +54,17 @@ const login = async (req, res) => {
 
 };
 
+const admin = async (req,res) => {
+    try {
+        const admin = await adminSql();
+        console.log(admin);
+        res.send(admin);
+    } catch (error) {
+        console.log(error);
+        res.status(400).send({msg : error});
+    }
+}
+
 
 
 
@@ -62,5 +72,6 @@ const login = async (req, res) => {
 module.exports = {
     getAllCustomers,
     register,
-    login
+    login,
+    admin
 }

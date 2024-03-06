@@ -63,5 +63,34 @@ const loginUserFunc = async (email,password) => {
 
 }
 
+const adminSql = async () => {
+  try {
+    let sql = `
+    SELECT  (
+      SELECT COUNT(*)
+      FROM   customer
+      ) AS customer,
+      (
+      SELECT COUNT(*)
+      FROM   product
+      ) AS product,
+  (
+      SELECT COUNT(*)
+      FROM   payment
+      ) AS payment ,
+  (
+      SELECT sum(total_amount)
+      FROM   payment
+      ) AS total
+  FROM    dual`
+    const [admin,_]  = await db.query(sql);
+    console.log("Model",admin);
+    return admin; 
+  } catch (error) {
+    return []
+  }
 
-module.exports = { getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc };
+}
+
+
+module.exports = { getCustomer, emailAlreadyExists, registerUserFunc, loginUserFunc, adminSql };
