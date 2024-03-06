@@ -16,7 +16,7 @@ const Featured = () => {
   return (
     <>
 
-    <div className='grid pt-12 gap-4  md:grid-cols-2 lg:grid-cols-3 align-element'>
+    <div className='grid pt-12 gap-4  md:grid-cols-2 lg:grid-cols-3 '>
     {products.map((product)=>{ 
         const {cost,product_name,image} = product;
         // const dollarAmount = formatPrice(cost);

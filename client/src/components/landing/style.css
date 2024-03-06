@@ -95,15 +95,12 @@ color: hsl(0, 0%, 100%);}
 
 .social-link {
   background: var(--gainsboro);
-  color: var(--onyx);
-  font-size: 20px;
-  padding: 10px;
-  transition: var(--transition-1);
+  font-size: 30px;
 }
 
 .social-link:is(:hover, :focus) {
-  background: var(--bittersweet);
-  color: var(--white);
+  color: var(--bittersweet);
+  /* color: var(--white); */
 }
 
 .footer-list-title {

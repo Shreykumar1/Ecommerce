@@ -24,7 +24,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       const reponse = await customFetch.get(`/payment/${customer.cart_id}`);
-      const data = reponse.data;
+      const data = await reponse.data;
       console.log(data);
       setPayments(data.payments);
     } catch (error) {
@@ -35,7 +35,7 @@ const Orders = () => {
 
   return (
     <section className='align-element pt-20'>
-      <SectionTitle text='Order' />
+      <SectionTitle text='Orders' />
       <OrderList payments={payments} />
     </section>
   )

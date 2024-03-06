@@ -41,9 +41,6 @@ const Admin = () => {
       </div>
       <div className="flex-1 p-6 overflow-y-auto  bg-neutral  text-neutral-content">
         {/* Content */}
-        <div className="bg-white p-6 rounded-lg shadow-md text-black">
-          <p>Welcome to the Admin Panel!</p>
-        </div>
         <Outlet />
       </div>
     </div>

@@ -6,10 +6,10 @@ const Landing = () => {
   return (
     <>
     <Hero />
-    <div className='align-element pt-12'>
-    <SectionTitle text ={"Featured Products"} className="mx-auto max-w-6xl px-8"/>
-    </div>
+    <div className='mx-auto max-w-7xl px-8 pt-12'>
+    <SectionTitle text ={"Featured Products"} className="mx-auto max-w-7xl px-8"/>
     <Featured />
+    </div>
     <Service />   
     <Cra />
     <LandingImages />
