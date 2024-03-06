@@ -23,7 +23,6 @@ const AddProducts = () => {
 
   const addImage = async (event) => {
     event.preventDefault();
-    // console.log(event.target.files[0]);
     const formData = new FormData();
     formData.append('image', selectedImage);
     console.log(selectedImage);
@@ -38,7 +37,8 @@ const AddProducts = () => {
         ...newProduct,
         "image": data.image.src
       })
-      console.log(data);
+      setImageSrc(data.image.src);
+      toast.success("Image Uploaded Successfully")
     } catch (error) {
       console.log(error);
       toast.warn(error.response.data.image.msg)
@@ -120,7 +120,7 @@ const AddProducts = () => {
           </select>
           <div className="mt-4">
             {/* <SubmitBtn text='Add Product'  disabled={selectedImage===null?true:false}/> */}
-            <button text='Add Product' className="btn btn-primary btn-block" disabled={selectedImage === null ? true : false} >{selectedImage ? "Add product" : "Upload Image First"}</button>
+            <button text='Add Product' className="btn btn-primary btn-block" disabled={imageSrc === null ? true : false} >{imageSrc ? "Add product" : "Upload Image First"}</button>
           </div>
         </form>
       </section>
