@@ -1,11 +1,13 @@
 import React from 'react'
 import { FaFacebook, FaLinkedin, FaPinterest, FaTwitter } from 'react-icons/fa6'
+import { IoChevronForward } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="">
 
-    <div className="footer-top section">
+    <div className="footer-top section ">
       <div className="container px-24">
 
         <div className="footer-brand flex justify-between pt-14 ">
@@ -57,16 +59,16 @@ const Footer = () => {
                 <ion-icon name="location"></ion-icon>
 
                 <span className="footer-link-text">
-                  2751 S Parker Rd, Aurora, CO 80014, United States
+                  E-566 Electronic City , Bengaluru
                 </span>
               </address>
             </li>
 
             <li>
-              <a href="tel:+557343673257" className="footer-link">
+              <a href="tel:+919876548932" className="footer-link">
                 <ion-icon name="call"></ion-icon>
 
-                <span className="footer-link-text">+557343673257</span>
+                <span className="footer-link-text">+919876548932</span>
               </a>
             </li>
 
@@ -87,24 +89,26 @@ const Footer = () => {
             </li>
 
             <li>
-              <a href="#" className="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+              <Link to="/orders" className="footer-link">
+                <IoChevronForward />
 
                 <span className="footer-link-text">My Account</span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a href="#" className="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+              <Link to="/cart" className="footer-link">
+                <IoChevronForward />
+
 
                 <span className="footer-link-text">View Cart</span>
-              </a>
+              </Link>
             </li>
 
             <li>
               <a href="#" className="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+               <IoChevronForward />
+
 
                 <span className="footer-link-text">Wishlist</span>
               </a>
@@ -112,18 +116,19 @@ const Footer = () => {
 
             <li>
               <a href="#" className="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+               <IoChevronForward />
+
 
                 <span className="footer-link-text">Compare</span>
               </a>
             </li>
 
             <li>
-              <a href="#" className="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+              <Link to="/products" className="footer-link">
+                <IoChevronForward />
 
                 <span className="footer-link-text">New Products</span>
-              </a>
+              </Link>
             </li>
 
           </ul>

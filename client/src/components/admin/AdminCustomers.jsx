@@ -13,12 +13,7 @@ const AdminCustomers = () => {
     try {
       const reponse = await customFetch.get('/customer');
       const data = await reponse.data;
-      console.log(data);
       setCustomers(data);
-      if(data.error) {
-        console.log(data.error);
-        console.log(data.status);
-      }
     } catch (error) {
       console.log(error);
     }

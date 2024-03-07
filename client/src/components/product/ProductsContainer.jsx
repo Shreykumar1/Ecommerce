@@ -20,22 +20,3 @@ const ProductsContainer = () => {
 }
 
 export default ProductsContainer
-
-// const [products,setProducts] = useState();
-// const [loading,setLoading] = useState(false);
-// useEffect(() => {
-//   setLoading(true);
-//   async function fetchData() {
-//       try {
-//           const response = await customFetch.get('/products');
-//           const data = await response.data;
-//           console.log(data);
-//           setProducts(data.products);
-//         } catch (error) {
-//           console.log(error);
-//         }
-//       }
-//       fetchData();
-//       setLoading(false);
-// },[])
-// console.log("State Product",products);

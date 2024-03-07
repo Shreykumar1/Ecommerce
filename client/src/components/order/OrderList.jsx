@@ -5,7 +5,6 @@ import { useGlobalContext } from '../../context';
 day.extend(advancedFormat);
 
 const OrdersList = ({payments}) => {
-  console.log(payments);
   const {customer} = useGlobalContext();
   // const { meta, orders } = useLoaderData();
   return (
@@ -29,7 +28,6 @@ const OrdersList = ({payments}) => {
               const id = payment.payment_id;
               const {  payment_date, total_amount, names, num } = payment;
               const {address, phone_number} = customer;
-              console.log("Customer",customer);
               const date = day(payment_date).format(' MMM Do, YYYY ');
 
               return <tr key={id}>

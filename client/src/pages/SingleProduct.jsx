@@ -12,7 +12,6 @@ const SingleProduct = () => {
   // amount
   const [amount,setAmount] = useState(1);
   const handleAmount = (e) => {
-    console.log(amount);
     setAmount(e.target.value)
   }
 
@@ -37,15 +36,15 @@ const SingleProduct = () => {
         product_id : id,
         purchased : "no"
       }
-      console.log(add);
       try {
         const response = await customFetch.post('/cart',add)
         const data = await response.data;
-        console.log(data);
+        ;
         fetchCart();
         toast.success("Added To Cart")
       } catch (error) {
         console.log(error);
+        toast.warn("Item Already In Cart")
       }
     }
 

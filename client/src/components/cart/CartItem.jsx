@@ -9,14 +9,13 @@ const CartItem = ({cartItem}) => {
   const {product_id,product_name,cost,image,cart_quantity,product_company, color,cart_id} = cartItem;
   const [amount,setAmount] = useState(cart_quantity);
   const removeItemFromTheCart = async (product) => { 
-    console.log("ProductId",cartItem.product_id);
     try {
       const response = await customFetch.patch(`/cart/delete/${cart_id}`,
       {
         "product_id" : product_id
       });
       const data = await response.data
-      console.log(data);
+      ;
       toast.success("Item Removed From Cart")
       fetchCart();
     } catch (error) {

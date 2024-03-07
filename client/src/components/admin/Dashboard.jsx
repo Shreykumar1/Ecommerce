@@ -19,7 +19,7 @@ const Dashboard = () => {
     try {
       const reponse = await customFetch.get(`/customer/admin`);
       const data = await reponse.data;
-      console.log(data);
+      ;
       setDetails(data[0])
     } catch (error) {
       console.log(error);
@@ -32,7 +32,6 @@ const Dashboard = () => {
   },[])
   const newValue = (num) => {
   let totalValue = formatPrice(num);
-  console.log(totalValue);
   totalValue = totalValue.substring(0,totalValue.length - 3);
   return totalValue
   }

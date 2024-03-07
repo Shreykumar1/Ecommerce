@@ -13,7 +13,6 @@ const AdminProducts = () => {
     customFetch(`/products`)
     .then(response => {
       setProducts(response.data.products)
-      console.log(response.data)
     })
   },[])
   // const {products} = useLoaderData();
@@ -31,7 +30,6 @@ const AdminProducts = () => {
       const data = await response.data ;
       toast.success("Item Deleted");
       navigate('/admin/product')
-      console.log(data);
     } catch (error) {
       console.log(error);
     }

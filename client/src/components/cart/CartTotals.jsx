@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, } from 'react';
 import { useGlobalContext } from '../../context';
 import { formatPrice } from '../../utils';
 
 
 const CartTotals = ({type,handleType}) => {
     const { customer, cart, fetchCart, price, calculateTotal, changeAmount } = useGlobalContext();
-    console.log(cart);
-    const [loading, setLoading] = useState(false);
     useEffect(() => {
         calculateTotal()
     }, [cart, changeAmount])
@@ -56,32 +54,3 @@ export default CartTotals
 
 
 
-
-    // useEffect(()=>fetchCart,[cart])
-    // useEffect(()=>{
-    //     console.log("Cart",cart);
-    //     if(cart){
-    //         setLoading(true)
-    //         let value = 0
-    //         const map1 = cart.map((x) =>  { 
-    //              value = value + x.cart_quantity * x.cost;
-    //             return value
-    //         });
-    //         console.log(value);
-    //         const shipping = 500;
-    //         const tax = (value/100 + shipping)*5/100;
-    //         const totalAmount = value/100 + shipping + tax ;
-    //         setPrice({
-    //             base : value/100,
-    //             shipping : shipping,
-    //             tax : tax,
-    //             total : totalAmount
-    //         })
-    //         setLoading(false)
-    //     }
-    // },[cart])
-
-
-    // if(loading){
-    //     return <h1>Loading</h1>
-    // }

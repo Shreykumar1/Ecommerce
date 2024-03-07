@@ -4,11 +4,9 @@ import { formatPrice } from '../../utils';
 
 const ProductsGrid = () => {
     const {products} = useLoaderData();
-    console.log("grid",products);
   return (
     <div className='grid pt-12 gap-4  md:grid-cols-2 lg:grid-cols-3'>
         {products.map((product)=>{ 
-            console.log(product);
             const {cost,product_name,image} = product;
             // const dollarAmount = formatPrice(cost);
             return <Link key={product.product_id} to={`/products/${product.product_id}`} className='w-full card shadow-xl hover:shadow-2xl transition duration-300' >

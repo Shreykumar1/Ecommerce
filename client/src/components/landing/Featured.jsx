@@ -10,7 +10,6 @@ const Featured = () => {
       customFetch(`/products`)
       .then(response => {
         setProducts(response.data.products.slice(0,3))
-        console.log(response.data)
       })
     },[])
   return (

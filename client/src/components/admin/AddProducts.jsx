@@ -25,7 +25,6 @@ const AddProducts = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append('image', selectedImage);
-    console.log(selectedImage);
     try {
       const resp = await customFetch.post(`/products/uploads`, formData, {
         headers: {
@@ -47,8 +46,6 @@ const AddProducts = () => {
   }
 
   const handleInputChange = (event) => {
-    console.log(event.target.name);
-    console.log(event.target.value);
     const { name, value } = event.target;
     if (name === "gender" && value === "default") {
       return toast.error("Please Select Gender")
@@ -60,7 +57,6 @@ const AddProducts = () => {
       ...newProduct,
       [name]: value,
     });
-    console.log(newProduct);
 
   }
 
@@ -68,7 +64,6 @@ const AddProducts = () => {
     try {
       const response = await customFetch.post('/products', newProduct);
       const data = await response.data;
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -76,7 +71,6 @@ const AddProducts = () => {
   const submitProduct = () => {
     event.preventDefault();
     const values = Object.values(newProduct);
-    console.log(values);
     if (values[7] === "") {
       return toast.error("Image Not Uploaded");
     }
@@ -87,7 +81,6 @@ const AddProducts = () => {
         return toast.error("All Input Fields Not Filled")
       }
     }
-    console.log(newProduct);
     postProduct();
     toast.success("Product Successfully Added");
     navigate('/admin/product')

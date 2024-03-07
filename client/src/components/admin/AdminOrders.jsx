@@ -15,12 +15,7 @@ const AdminOrders = () => {
     try {
       const reponse = await customFetch.get('/payment');
       const data = await reponse.data;
-      console.log(data);
       setPayments(data.payments);
-      if(data.error) {
-        console.log(data.error);
-        console.log(data.status);
-      }
     } catch (error) {
       console.log(error);
     }

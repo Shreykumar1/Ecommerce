@@ -33,14 +33,12 @@ const Register = () => {
 
 
   const handleRegister = async () => {
-    console.log(registerCustomer);
     event.preventDefault();
     try {
 
       const response = await customFetch.post('http://localhost:3000/api/v1/customer/register',registerCustomer);
       const data = await response.data;
-      console.log(data);
-      console.log(data.customer);
+      ;
       localStorage.setItem('customer',JSON.stringify(data.customer));
       setCustomer(data.customer);
       toast.success("Registered  Successfully");

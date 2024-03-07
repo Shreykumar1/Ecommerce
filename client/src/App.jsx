@@ -12,15 +12,6 @@ import { loader as productLoader } from './pages/Products';
 function App() {
   const [count, setCount] = useState(0);
   const { cocktails,loading } = useGlobalContext();
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/api/v1/products/kkE4")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
 
   const router = createBrowserRouter([
     {

@@ -25,11 +25,14 @@ const Orders = () => {
     try {
       const reponse = await customFetch.get(`/payment/${customer.cart_id}`);
       const data = await reponse.data;
-      console.log(data);
+      ;
       setPayments(data.payments);
     } catch (error) {
       console.log(error);
     }
+  }
+  if(payments.length === 0){
+    return <div className='align-element pt-20'><SectionTitle text='No Orders' /></div>
   }
 
 

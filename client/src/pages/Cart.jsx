@@ -9,7 +9,6 @@ import { customFetch } from '../utils';
 const Cart = () => {
   const {cart, customer, fetchCart} = useGlobalContext();
   const [type, setType] = useState("");
-  // const [cartProductId,setCartProductId]  = useState([]);
   useEffect(()=>{
     fetchCart
   },[])
@@ -17,7 +16,6 @@ const Cart = () => {
     if(e.target.value !== "default"){
       setType(e.target.value);
     }
-    console.log(e.target.value);
   }
   const createPayment = async () => {
     event.preventDefault();
@@ -26,7 +24,6 @@ const Cart = () => {
     });
     let str = array.join("','");
     str = "'" + str + "'";
-    console.log("ProductId String",str);
     if(!type){
       toast.error("Please Select Payment Type")
     }else{
@@ -39,7 +36,7 @@ const Cart = () => {
         product_id : str
       })
       const data = await response.data ;
-       console.log(data);
+       ;
        toast.success("Order created Successfully");
        fetchCart();
     } catch (error) {
@@ -49,7 +46,7 @@ const Cart = () => {
   }
   }
   if(cart.length === 0){
-    return <div className='align-element'><SectionTitle text='Your cart is empty' /></div>
+    return <div className='align-element pt-20'><SectionTitle text='Your cart is empty' /></div>
   }
   return (
     <>

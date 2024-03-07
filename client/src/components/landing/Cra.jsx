@@ -6,7 +6,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 const Cra = () => {
     return (
-        <section className="section  ">
+        <section className="section  mb-20">
             <div className="container">
                 <ul className="flex w-full justify-center gap-x-8 py-12 flex-wrap gap-y-3">
                     <li>

@@ -1,35 +1,6 @@
-// import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-// import { customFetch } from '../../utils';
-
-// const AdminSingleProduct = () => {
-//   const {id} = useParams();
-//   useEffect(() => {
-//     customFetch(`/products/${id}`)
-//     .then(response => {
-//       console.log(response.data[0])
-//     })
-//   },[])
-  
-//   return (
-//     <div>AdminSingleProduct</div>
-//   )
-// }
-
-// export default AdminSingleProduct
-
-
-
-
-
-
-
-
-
-
 import React, { useEffect, useState } from 'react'
 import { customFetch } from '../../utils';
-import SubmitBtn from '../form/SubmitBtn';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
@@ -52,15 +23,12 @@ const AdminSingleProduct = () => {
     customFetch(`/products/${id}`)
     .then(response => {
       setNewProduct(response.data[0])
-      console.log(response.data[0])
     })
   },[])
 
 
 
   const handleInputChange = (event) => {
-    console.log(event.target.name);
-    console.log(event.target.value);
     const { name, value } = event.target;
     if (name === "gender" && value === "default") {
       return toast.error("Please Select Gender")
@@ -72,7 +40,6 @@ const AdminSingleProduct = () => {
       ...newProduct,
       [name]: value,
     });
-    console.log(newProduct);
 
   }
 
@@ -80,7 +47,6 @@ const AdminSingleProduct = () => {
     try {
       const response = await customFetch.patch(`/products/${id}`, newProduct);
       const data = await response.data;
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +54,6 @@ const AdminSingleProduct = () => {
   const submitProduct = () => {
     event.preventDefault();
     const values = Object.values(newProduct);
-    console.log(values);
     for (let index = 0; index < values.length; index++) {
       const element = values[index];
       if (element === '' || element === null) {
@@ -96,13 +61,9 @@ const AdminSingleProduct = () => {
         return toast.error("All Input Fields Not Filled")
       }
     }
-    console.log(newProduct);
     updateProduct();
     toast.success("Product Successfully Updated");
     navigate('/admin/product')
-    // let secondWindow = window.open('http://localhost:5173/admin/product');
-    // secondWindow.location.replace('http://localhost:5173/admin/product');
-
   }
   return (
     <div className="flex w-full pt-4 justify-around">

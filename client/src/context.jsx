@@ -10,7 +10,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(()=>{
     const custLocal = JSON.parse(localStorage.getItem('customer')) || null ;
-    console.log("Hello");
     setCustomer(custLocal)
   },[])
 
@@ -23,14 +22,10 @@ const AppProvider = ({ children }) => {
     total : 0
 });
   const fetchCart = async () => {
-    console.log("fetching cart");
     if(customer){
       const response = await customFetch.get(`cart/${customer.cart_id}`);
       const data = await response.data ;
       setCart(data);
-    }
-    else{
-      console.log([]);
     }
   }
   useEffect(()=>{
@@ -38,7 +33,6 @@ const AppProvider = ({ children }) => {
   },[customer])
 
   const calculateTotal = async () => {
-    console.log("Cart",cart);
     if(customer){
     const response = await customFetch.get(`cart/${customer.cart_id}`);
     const data = await response.data ;
@@ -48,7 +42,6 @@ const AppProvider = ({ children }) => {
              value = value + x.cart_quantity * x.cost;
             return value
         });
-        console.log(value);
         const shipping = 500;
         const tax = (value/100 + shipping)*5/100;
         const totalAmount = value/100 + shipping + tax ;
