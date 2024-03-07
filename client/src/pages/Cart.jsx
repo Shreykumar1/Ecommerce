@@ -49,7 +49,7 @@ const Cart = () => {
   }
   }
   if(cart.length === 0){
-    return <SectionTitle text='Your cart is empty' />
+    return <div className='align-element'><SectionTitle text='Your cart is empty' /></div>
   }
   return (
     <>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { customFetch, generateAmountOptions } from '../../utils';
+import { customFetch, formatPrice, generateAmountOptions } from '../../utils';
 import { useGlobalContext } from '../../context';
+import { toast } from 'react-toastify';
 // import { formatPrice,generateAmountOptions } from '../utils'
 
 const CartItem = ({cartItem}) => {
@@ -16,6 +17,7 @@ const CartItem = ({cartItem}) => {
       });
       const data = await response.data
       console.log(data);
+      toast.success("Item Removed From Cart")
       fetchCart();
     } catch (error) {
       console.log(error);
@@ -64,7 +66,7 @@ const CartItem = ({cartItem}) => {
             value={amount}
             onChange={handleAmount}
           >
-            {generateAmountOptions(amount + 5)}
+            {generateAmountOptions(5 + 5)}
           </select>
         </div>
         <button
@@ -74,7 +76,7 @@ const CartItem = ({cartItem}) => {
           remove
         </button>
       </div>
-      <p className='font-medium sm:ml-auto'>{cost/100}</p>
+      <p className='font-medium sm:ml-auto'>{formatPrice(cost)}</p>
     </article>
   )
 }

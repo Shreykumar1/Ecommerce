@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link ,useParams } from 'react-router-dom'
 import { customFetch, formatPrice, generateAmountOptions } from '../utils';
 import { useGlobalContext } from '../context';
+import { toast } from 'react-toastify';
 
 const SingleProduct = () => {
   const {customer,fetchCart} = useGlobalContext();
@@ -41,7 +42,8 @@ const SingleProduct = () => {
         const response = await customFetch.post('/cart',add)
         const data = await response.data;
         console.log(data);
-        fetchCart()
+        fetchCart();
+        toast.success("Added To Cart")
       } catch (error) {
         console.log(error);
       }

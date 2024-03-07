@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useGlobalContext } from '../../context';
+import { formatPrice } from '../../utils';
 
 
 const CartTotals = ({type,handleType}) => {
@@ -21,19 +22,19 @@ const CartTotals = ({type,handleType}) => {
                 <div className="card-body">
                     <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
                         <span>SubTotal </span>
-                        <span>{price.base}</span>
+                        <span>{formatPrice(price.base*100)}</span>
                     </p>
                     <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
                         <span>Shipping </span>
-                        <span>{price.shipping}</span>
+                        <span>{formatPrice(price.shipping*100)}</span>
                     </p>
                     <p className='flex justify-between text-xs border-b border-base-300 pb-2'>
                         <span>Tax </span>
-                        <span>{price.tax.toFixed(2)}</span>
+                        <span>{formatPrice(price.tax*100)}</span>
                     </p>
                     <p className='mt-4 flex justify-between text-sm pb-2'>
                         <span className='font-bold'>Order </span>
-                        <span className='font-bold'>{price.total.toFixed(2)}</span>
+                        <span className='font-bold'>{formatPrice(price.total*100)}</span>
                     </p>
                 </div>
             </div>
