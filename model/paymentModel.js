@@ -4,11 +4,7 @@ const ShortUniqueId = require('short-unique-id');
 
 
 const getAllpaymentsSql = async () => {
-    // const sql = `select * from payment`
-    // const [payment,_] = await db.execute(sql);
-    // return payment;
 
-    // New All Payment
     
     const sql = `select * from payment `;
     const [payment,_] = await db.execute(sql);
@@ -26,13 +22,11 @@ const getAllpaymentsSql = async () => {
              and c.purchased =  "${singlePayment.payment_id}" ))`
 
         const [[xyz]] = await db.execute(sql1);
-        console.log(xyz);
 
         const sql2 = `select sum(cart_quantity) as num from cart_item where cart_id = "${singlePayment.cart_id}" and purchased = "${singlePayment.payment_id}"; `
         const [[{num}]] = await db.execute(sql2);
         const sql3 = `select name,address from customer where customer_id = "${singlePayment.customer_id}"`
         const [[cust]] = await db.execute(sql3);
-        console.log(cust);
         singlePayment.names = xyz.names;
         singlePayment.num = num;
         singlePayment.name = cust.name;

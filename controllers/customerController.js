@@ -57,7 +57,6 @@ const login = async (req, res) => {
 const admin = async (req,res) => {
     try {
         const admin = await adminSql();
-        console.log(admin);
         res.send(admin);
     } catch (error) {
         console.log(error);

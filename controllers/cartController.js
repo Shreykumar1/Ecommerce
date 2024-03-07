@@ -62,11 +62,8 @@ const deleteCartItem = async (req,res) => {
     try {
         const {id} = req.params;
         const {product_id} = req.body;
-        console.log(product_id);
         let sql = `SELECT * FROM cart_item  WHERE product_id = '${product_id}' and cart_id ='${id}';`
-        console.log(sql);
         const [cartItemExists,_] = await db.execute(sql);
-        console.log(cartItemExists);
         if(cartItemExists.length === 0){
             return res.status(404).send({
                 status : 400,

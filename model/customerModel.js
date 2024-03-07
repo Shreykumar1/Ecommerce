@@ -84,7 +84,6 @@ const adminSql = async () => {
       ) AS total
   FROM    dual`
     const [admin,_]  = await db.query(sql);
-    console.log("Model",admin);
     return admin; 
   } catch (error) {
     return []

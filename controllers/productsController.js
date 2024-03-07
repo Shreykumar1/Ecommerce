@@ -81,7 +81,6 @@ const deleteProduct = async (req,res) => {
     const {id} = req.params;
     try {
         const productExists = await getSingleProductsSql(id);
-        console.log(productExists);
         if(productExists.length === 0){
             return res.status(404).send({
                 status : 404,
@@ -141,7 +140,6 @@ const updateProduct = async (req,res) => {
             // filterString =  filterString + "where "
             filterString = filterString + filterArray.join(" , ");
         }
-        console.log(filterString);
 
 
         const product = await updateProductSql(id,filterString);

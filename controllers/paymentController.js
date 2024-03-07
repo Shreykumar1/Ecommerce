@@ -28,7 +28,6 @@ const createPayment = async (req,res) => {
 const getSinglePayment = async (req,res) => {
     try {
         const {id} = req.params;
-        console.log(id);
         const payments = await getSinglePaymentSql(id);
         res.status(200).send({payments})
     } catch (error) {
