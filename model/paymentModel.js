@@ -48,7 +48,7 @@ const getAllpaymentsSql = async () => {
 
 }
 
-const createPaymentSql = async (payment_type,customer_id,cart_id,product_id) => {
+const createPaymentSql = async (payment_type,customer_id,cart_id,product_id,total_amount) => {
     let d = new Date();
     let yyyy = d.getFullYear();
     let mm = d.getMonth() + 1;
@@ -59,15 +59,15 @@ const createPaymentSql = async (payment_type,customer_id,cart_id,product_id) => 
 
     let createdAtDate = `${yyyy}-${mm}-${dd}`
     // Total Amount 
-    const amountSql = `select  sum(cost) as total from product where product_id in 
-    ( select product_id from cart_item
-    where cart_id = "${cart_id}" and purchased = "no" );`
-    const [[{total}]] = await db.execute(amountSql);
-    if(!total){
-         return {error : {status : 404, msg : "No Item In cart"}};
-    }
+    // const amountSql = `select  sum(cost) as total from product where product_id in 
+    // ( select product_id from cart_item
+    // where cart_id = "${cart_id}" and purchased = "no" );`
+    // const [[{total}]] = await db.execute(amountSql);
+    // if(!total){
+    //      return {error : {status : 404, msg : "No Item In cart"}};
+    // }
 
-    const sql = `insert into payment values('${payment_id}','${createdAtDate}','${payment_type}','${customer_id}','${cart_id}','${total}')`
+    const sql = `insert into payment values('${payment_id}','${createdAtDate}','${payment_type}','${customer_id}','${cart_id}','${total_amount}')`
     const [payment,_] = await db.execute(sql);
 
     let purchasedSql = `UPDATE cart_item
@@ -75,7 +75,7 @@ const createPaymentSql = async (payment_type,customer_id,cart_id,product_id) => 
     WHERE  cart_id ='${cart_id}' and product_id in (${product_id});`
     const updatePurchased = await db.execute(purchasedSql);
 
-    return {payment,obj : {payment_id,payment_date : createdAtDate,payment_type,customer_id,cart_id,total_amount : total},updatePurchased};
+    return {payment,obj : {payment_id,payment_date : createdAtDate,payment_type,customer_id,cart_id,total_amount },updatePurchased};
 }
 
 const getSinglePaymentSql = async (cart_id) => {

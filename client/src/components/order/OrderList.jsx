@@ -2,6 +2,7 @@
 import day from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import { useGlobalContext } from '../../context';
+import { formatPrice } from '../../utils';
 day.extend(advancedFormat);
 
 const OrdersList = ({payments}) => {
@@ -34,7 +35,8 @@ const OrdersList = ({payments}) => {
                 <td>{names}</td>
                 <td>{address}</td>
                 <td>{num}</td>
-                <td>{total_amount/100}</td>
+                {/* <td>{total_amount/100}</td> */}
+                <td>{formatPrice(total_amount)}</td>
                 <td className='hidden sm:block'>{date}</td>
               </tr>
             })}

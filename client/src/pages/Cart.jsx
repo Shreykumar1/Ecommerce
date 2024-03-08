@@ -7,7 +7,7 @@ import { customFetch } from '../utils';
 
 
 const Cart = () => {
-  const {cart, customer, fetchCart} = useGlobalContext();
+  const {cart, customer, fetchCart, price} = useGlobalContext();
   const [type, setType] = useState("");
   useEffect(()=>{
     fetchCart
@@ -33,10 +33,11 @@ const Cart = () => {
         payment_type : type,
         customer_id : customer.customer_id,
         cart_id : customer.cart_id,
-        product_id : str
+        product_id : str,
+        total_amount : price.total*100
       })
       const data = await response.data ;
-       ;
+      console.log(data);
        toast.success("Order created Successfully");
        fetchCart();
     } catch (error) {

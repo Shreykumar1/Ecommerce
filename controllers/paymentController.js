@@ -14,10 +14,10 @@ const getAllPayments = async (req,res) => {
 }
 const createPayment = async (req,res) => {
     try {
-        const {payment_type,customer_id,cart_id,product_id} = req.body;
-        const {payment,obj,error} = await createPaymentSql(payment_type,customer_id,cart_id,product_id);
+        const {payment_type,customer_id,cart_id,product_id,total_amount} = req.body;
+        const {payment,obj,error} = await createPaymentSql(payment_type,customer_id,cart_id,product_id,total_amount);
         if(error){
-           return res.status(404).send(error)
+           return res.status(400).send(error)
         }
         res.status(201).send({payments : obj,status : 201,msg : "Payment Created"})
     } catch (error) {
