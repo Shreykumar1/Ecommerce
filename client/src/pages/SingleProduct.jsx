@@ -23,7 +23,7 @@ const SingleProduct = () => {
     })
     setLoading(false)
   },[])
-  const {product_name,cost,image,product_company,color,size,gender} =  product;
+  const {product_name,cost,image,product_company,color,size,gender,quantity} =  product;
 
     if(loading) {
       return <h1>Loading</h1>
@@ -118,8 +118,8 @@ const SingleProduct = () => {
     </div>
     {/* CART BTN */}
     <div className="mt-10">
-      <button className="btn btn-secondary btn-md uppercase" onClick={addToCart} >
-        Add To Bag
+      <button className="btn btn-secondary btn-md uppercase" onClick={addToCart} disabled={quantity===0?true:false}>
+         {quantity===0?"Sold Out":"Add To Bag"}
       </button>
     </div>
 
