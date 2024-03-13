@@ -4,7 +4,6 @@ import { customFetch, formatPrice } from '../../utils';
 
 import { RiGitRepositoryLine } from "react-icons/ri";
 import { LuUsers } from "react-icons/lu";
-import { LuUserPlus } from "react-icons/lu";
 import { GoCodeSquare } from "react-icons/go";
 
 import { FaRupeeSign } from "react-icons/fa";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {Link,} from 'react-router-dom'
-import { customFetch } from '../../utils'
+import { customFetch, formatPrice } from '../../utils'
 import SectionTitle from '../cart/SectionTitle'
 
 
@@ -25,7 +25,7 @@ const Featured = () => {
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title capitalize tracking-wider">{product_name}</h2>
-                <span className="text-secondary">{cost/100}</span>
+                <span className="text-secondary">{formatPrice(cost)}</span>
             </div>
         </Link>
     })}

@@ -2,6 +2,11 @@ import React, { useEffect } from 'react'
 import { useGlobalContext } from '../context';
 import { toast } from 'react-toastify';
 import {  Link, NavLink, Outlet, useNavigate} from 'react-router-dom';
+import { BiSolidDashboard } from "react-icons/bi";
+import { LuUsers } from "react-icons/lu";
+import { FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+
+
 
 
 
@@ -22,7 +27,7 @@ const Admin = () => {
 
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex  bg-gray-100">
       <div className="flex-shrink-0 w-64 bg-base-300 ">
         {/* Sidebar */}
         <div className="h-full py-4 flex flex-col ">
@@ -32,10 +37,10 @@ const Admin = () => {
           </div>
           {/* Navigation */}
           <nav className="mt-0">
-            <NavLink to='/admin' className="block px-4 py-2 text-white focus:bg-gray-700 "  >Dashboard</NavLink>
-            <NavLink to='/admin/customer' className="block px-4 py-2 text-white focus:bg-gray-700 "  >Customers</NavLink>
-            <NavLink to='/admin/product' className="block px-4 py-2 text-white focus:bg-gray-700 " >Products</NavLink>
-            <NavLink to='/admin/order' className="block px-4 py-2 text-white  focus:bg-gray-700 "  >Orders</NavLink>
+            <NavLink to='/admin' className=" px-4 py-2 text-white focus:bg-gray-700 flex items-center gap-x-3"><BiSolidDashboard />Dashboard</NavLink>
+            <NavLink to='/admin/customer' className=" px-4 py-2 text-white focus:bg-gray-700 flex items-center gap-x-3 "  ><LuUsers />Customers</NavLink>
+            <NavLink to='/admin/product' className=" px-4 py-2 text-white focus:bg-gray-700 flex items-center gap-x-3 " ><FaShoppingCart /> Products</NavLink>
+            <NavLink to='/admin/order' className=" px-4 py-2 text-white focus:bg-gray-700 flex items-center gap-x-3 "  ><FaShoppingBag /> Orders</NavLink>
           </nav>
         </div>
       </div>
