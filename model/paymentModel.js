@@ -107,7 +107,7 @@ const getSinglePaymentSql = async (cart_id) => {
     })
     try {
         const results = await Promise.all(paymentsArray);
-        console.log("Result",results);
+        // console.log("Result",results);
         
     } catch (error) {
         

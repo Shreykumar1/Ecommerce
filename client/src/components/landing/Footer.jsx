@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="footer-brand flex justify-between pt-14 ">
 
           <a href="#" className="logo">
-            <img src="src\components\landing\images\footcap.png" width="400" height="200" alt="Footcap logo"/>
+            <img src="images\footcap.png" width="400" height="200" alt="Footcap logo"/>
           </a>
 
           <ul className="social-list grid place-items-center grid-cols-4">
