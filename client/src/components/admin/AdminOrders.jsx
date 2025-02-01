@@ -32,7 +32,7 @@ const AdminOrders = () => {
   return (
     <div className='mt-8'>
       <h4 className="capitalize mb-4">
-        total customers : {payments.length}
+        total orders : {payments.length}
       </h4>
       <div className="overflow-x-auto">
         <table className="table table-zebra">

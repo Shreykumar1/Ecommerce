@@ -76,7 +76,7 @@ const Dashboard = () => {
 
   return (
     <div>
-        <div className=" p-6 rounded-lg ">
+        <div className=" p-6 rounded-lg pb-12">
         <h1 className="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Welcome to Admin Panel</h1>
           <SectionTitle text={"Dashboard"} />
           <div className="grid grid-cols-2 justify-between mt-8 flex-wrap gap-y-6 place-items-center">

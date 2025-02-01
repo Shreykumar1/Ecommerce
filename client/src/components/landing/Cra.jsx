@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import cta1 from "./images/cta-1.jpg"
-import cta2 from "./images/cta-2.jpg"
+import cta1 from "./cta-1.jpg"
+import cta2 from "./cta-2.jpg"
 import { FaArrowRight } from 'react-icons/fa6';
 
 const Cra = () => {

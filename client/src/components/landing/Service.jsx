@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatPrice } from '../../utils'
 
 const Service = () => {
   return (
@@ -11,14 +12,14 @@ const Service = () => {
               <div className="service-card">
 
                 <div className="card-icon">
-                  <img src="src\components\landing\images\service-1.png" width="53" height="28" loading="lazy" alt="Service icon" />
+                  <img src="images/service-1.png" width="53" height="28" loading="lazy" alt="Service icon" />
                 </div>
 
                 <div>
                   <h3 className="h4 card-title uppercase">Free Shiping</h3>
 
                   <p className="card-text">
-                    All orders over <span>$150</span>
+                    All orders over <span>&#8377;150</span>
                   </p>
                 </div>
 
@@ -29,7 +30,7 @@ const Service = () => {
               <div className="service-card">
 
                 <div className="card-icon">
-                <img src="src\components\landing\images\service-2.png" width="53" height="28" loading="lazy" alt="Service icon" />
+                <img src="images/service-2.png" width="53" height="28" loading="lazy" alt="Service icon" />
                 </div>
 
                 <div>
@@ -47,7 +48,7 @@ const Service = () => {
               <div className="service-card">
 
                 <div className="card-icon">
-                <img src="src\components\landing\images\service-3.png" width="53" height="28" loading="lazy" alt="Service icon" />
+                <img src="images/service-3.png" width="53" height="28" loading="lazy" alt="Service icon" />
                 </div>
 
                 <div>
@@ -65,7 +66,7 @@ const Service = () => {
               <div className="service-card">
 
                 <div className="card-icon">
-                <img src="src\components\landing\images\service-4.png" width="53" height="28" loading="lazy" alt="Service icon" />
+                <img src="images/service-4.png" width="53" height="28" loading="lazy" alt="Service icon" />
                 </div>
 
                 <div>
