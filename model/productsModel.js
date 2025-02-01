@@ -14,7 +14,7 @@ const createProductSql = async (product_name,product_company,color,size,gender,c
     const uid = new ShortUniqueId({ length: 4});
     const product_id = uid.rnd();
 
-    let sql = `insert into Product values('${product_id}','${product_name}','${product_company}','${color}',${size},'${gender}',${cost},${quantity},'${image}');`
+    let sql = `insert into product values('${product_id}','${product_name}','${product_company}','${color}',${size},'${gender}',${cost},${quantity},'${image}');`
     const [product,_]  = await db.query(sql);
     return {product,product_id }; 
 }
