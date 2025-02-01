@@ -36,7 +36,7 @@ const Register = () => {
     event.preventDefault();
     try {
 
-      const response = await customFetch.post('http://localhost:3000/api/v1/customer/register',registerCustomer);
+      const response = await customFetch.post('https://footcap-production.up.railway.app/api/v1/customer/register',registerCustomer);
       const data = await response.data;
       ;
       localStorage.setItem('customer',JSON.stringify(data.customer));

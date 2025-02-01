@@ -20,7 +20,7 @@ const uploadProductImage = async (req,res) => {
 
     const imagePath = path.join(__dirname,'../public/uploads/'+`${productImage.name}`);
     await productImage.mv(imagePath)
-    return res.status(201).json({image : {src : `http://localhost:3000/uploads/${productImage.name}`}})
+    return res.status(201).json({image : {src : `https://footcap-production.up.railway.app/uploads/${productImage.name}`}})
 }
 
 

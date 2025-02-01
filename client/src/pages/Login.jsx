@@ -16,7 +16,7 @@ const Login = () => {
     event.preventDefault();
         try {
 
-            const response = await axios.post('http://localhost:3000/api/v1/customer/login',{
+            const response = await axios.post('https://footcap-production.up.railway.app/api/v1/customer/login',{
                 email : email,
                 password : password
             });

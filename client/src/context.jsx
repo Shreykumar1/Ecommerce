@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { customFetch } from "./utils";
 
-const url = `http://localhost:3000/api/v1/`
+const url = `https://footcap-production.up.railway.app/api/v1/`
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
