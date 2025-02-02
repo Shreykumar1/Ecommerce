@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const dotenv = require('dotenv')
 const customerRouter = require('./routes/customerRoute');
 const productRouter = require('./routes/productRoute');
 const cartRouter = require('./routes/cartRouter');
@@ -9,6 +10,7 @@ const paymentRouter = require('./routes/paymentRouter');
 const fileUpload = require('express-fileupload')
 app.use(express.static('./public'))
 app.use(fileUpload())
+dotenv.config()
 
 
 app.use(express.json());

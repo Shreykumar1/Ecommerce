@@ -1,4 +1,8 @@
 const mysql = require('mysql2');
+const fs = require('fs')
+const products = fs.readFileSync('products.json','utf-8')
+const productArray = JSON.parse(products);
+// console.log(products);
 
 // Create connection
 const connection = mysql.createConnection({
@@ -42,13 +46,17 @@ connection.connect(err => {
   //   console.log("Table added successfully!");
   //   connection.end();
   // });
-
-    connection.query("SHOW TABLES", (err, result) => {
-    if (err) throw err;
-    console.log("Tables in Database:");
-    console.log(result);
-    // connection.end();
-  });
+  // productArray.map((product)=> {  
+  //   const {product_id, product_name, product_company, color, size, gender, cost, quantity, image} = product;
+  //   connection.query(`insert into product values('${product_id}','${product_name}','${product_company}','${color}',${size},'${gender}',${cost},${quantity},'${image}');`, (err, result) => {
+  //     if (err) throw err;
+  //     console.log("Tables in Database:");
+  //     console.log(result);
+  //     // connection.end();
+  //   });  
+  // //   // console.log({product_id, product_name, product_company, color, size, gender, cost, quantity, image});
+    
+  // })
 
   // connection.query("DROP TABLE customer", (err, result) => {
   //   if (err) throw err;
@@ -57,7 +65,7 @@ connection.connect(err => {
   //   connection.end();
   // });
 
-  connection.query("Select * from customer", (err, result) => {
+  connection.query("ALTER TABLE cart_item MODIFY purchased VARCHAR(10);", (err, result) => {
     if (err) throw err;
     console.log(result);
     console.log(result);
@@ -70,4 +78,5 @@ connection.connect(err => {
     //   console.log(result);
     //   connection.end();
     // });
+  
 });

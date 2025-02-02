@@ -1,0 +1,156 @@
+[
+	{
+		"product_id" : "f9SS",
+		"product_name" : "Tanjiro Sp",
+		"product_company" : "Etsy",
+		"color" : "green",
+		"size" : 8,
+		"gender" : "M",
+		"cost" : 543000,
+		"quantity" : 5,
+		"image" : "/images/demon.avif"
+	},
+	{
+		"product_id" : "HjXS",
+		"product_name" : "Itachi Men High Top",
+		"product_company" : "Etsy",
+		"color" : "black",
+		"size" : 9,
+		"gender" : "M",
+		"cost" : 279999,
+		"quantity" : 12,
+		"image" : "/images/itachi.jpg"
+	},
+	{
+		"product_id" : "JZh4",
+		"product_name" : "nike-new jordan",
+		"product_company" : "nike",
+		"color" : "white",
+		"size" : 10,
+		"gender" : "M",
+		"cost" : 2450000,
+		"quantity" : 24,
+		"image" : "/images/download.jpg"
+	},
+	{
+		"product_id" : "LTKZ",
+		"product_name" : "Mens Ree-FLECT",
+		"product_company" : "Campus",
+		"color" : "black",
+		"size" : 8,
+		"gender" : "M",
+		"cost" : 332400,
+		"quantity" : 22,
+		"image" : "/images/campus-black.jpg"
+	},
+	{
+		"product_id" : "mEzD",
+		"product_name" : "Nebzed Cloudfoam Adidas",
+		"product_company" : "Adidas",
+		"color" : "red",
+		"size" : 10,
+		"gender" : "M",
+		"cost" : 384950,
+		"quantity" : 3,
+		"image" : "/images/product-6.jpg"
+	},
+	{
+		"product_id" : "MorV",
+		"product_name" : "Nike Air Max 270 SE",
+		"product_company" : "Nike",
+		"color" : "green",
+		"size" : 8,
+		"gender" : "M",
+		"cost" : 1399500,
+		"quantity" : 10,
+		"image" : "/images/product-5.jpg"
+	},
+	{
+		"product_id" : "n8S0",
+		"product_name" : "Reebok Patike",
+		"product_company" : "Reebok",
+		"color" : "white",
+		"size" : 7,
+		"gender" : "M",
+		"cost" : 859900,
+		"quantity" : 3,
+		"image" : "/images/product-4.jpg"
+	},
+	{
+		"product_id" : "NLsE",
+		"product_name" : "Nike Zoom",
+		"product_company" : "Nike",
+		"color" : "blue",
+		"size" : 8,
+		"gender" : "M",
+		"cost" : 1345955,
+		"quantity" : 9,
+		"image" : "/images/product-2.jpg"
+	},
+	{
+		"product_id" : "Oyfy",
+		"product_name" : "Adidas  1 new",
+		"product_company" : "Adidas",
+		"color" : "white",
+		"size" : 9,
+		"gender" : "M",
+		"cost" : 1700000,
+		"quantity" : 25,
+		"image" : "/images/download (1).jpg"
+	},
+	{
+		"product_id" : "rEp9",
+		"product_name" : "Addidas Sneaker",
+		"product_company" : "Adidas",
+		"color" : "black",
+		"size" : 5,
+		"gender" : "F",
+		"cost" : 225999,
+		"quantity" : 5,
+		"image" : "/images/adidas.jpg"
+	},
+	{
+		"product_id" : "SkSI",
+		"product_name" : "Campus Hood",
+		"product_company" : "Campus",
+		"color" : "blue",
+		"size" : 7,
+		"gender" : "F",
+		"cost" : 214950,
+		"quantity" : 4,
+		"image" : "/images/campus-hood.jpg"
+	},
+	{
+		"product_id" : "xIZw",
+		"product_name" : "Nike Essentials 2",
+		"product_company" : "Nike",
+		"color" : "black",
+		"size" : 7,
+		"gender" : "F",
+		"cost" : 145999,
+		"quantity" : 50,
+		"image" : "/images/collection-2.jpg"
+	},
+	{
+		"product_id" : "Za7t",
+		"product_name" : "Nike Air Max 90",
+		"product_company" : "Nike",
+		"color" : "red",
+		"size" : 8,
+		"gender" : "F",
+		"cost" : 332950,
+		"quantity" : 10,
+		"image" : "/images/product-3.jpg"
+	},
+	{
+		"product_id" : "zY5y",
+		"product_name" : "Simple Fabric Shoe",
+		"product_company" : "New Balance",
+		"color" : "blue",
+		"size" : 9,
+		"gender" : "M",
+		"cost" : 125999,
+		"quantity" : 0,
+		"image" : "/images/product-8.jpg"
+	}
+]
