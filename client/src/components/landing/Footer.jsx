@@ -200,7 +200,7 @@ const Footer = () => {
       <div className="container">
 
         <p className="copyright">
-          &copy; 2024 <a href="#" className="copyright-link">Shrey & Kishor</a>. All Rights Reserved
+          &copy; 2024 <a href="#" className="copyright-link">Shrey</a>. All Rights Reserved
         </p>
 
       </div>
